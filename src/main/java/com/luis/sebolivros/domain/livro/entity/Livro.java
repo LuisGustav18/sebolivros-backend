@@ -1,0 +1,153 @@
+package com.luis.sebolivros.domain.livro.entity;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.luis.sebolivros.domain.editora.entity.Editora;
+import com.luis.sebolivros.domain.autor.entity.Autor;
+import com.luis.sebolivros.domain.livro.enums.Condicao;
+import com.luis.sebolivros.domain.livro.enums.Estado;
+import jakarta.persistence.*;
+
+import java.time.LocalDate;
+import java.util.Objects;
+
+@Entity
+public class Livro {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
+    private String titulo;
+    private int quantidade;
+
+    @ManyToOne
+    @JoinColumn(name = "autor_id")
+    private Autor auto;
+
+    @ManyToOne
+    @JoinColumn(name = "editora_id")
+    private Editora editora;
+
+    private int isbn;
+
+    private Condicao condicao;
+
+    private Estado Estado;
+
+    private String imageUrl;
+
+    @JsonFormat(pattern = "dd/MM/yyyy")
+    private LocalDate dataCriacao = LocalDate.now();
+
+    public Livro(){
+
+    }
+
+    public Livro(int id, String titulo, int quantidade,
+                 Autor auto, Editora editora, int isbn,
+                 Condicao condicao, Estado estado) {
+        this.id = id;
+        this.titulo = titulo;
+        this.quantidade = quantidade;
+        this.auto = auto;
+        this.editora = editora;
+        this.isbn = isbn;
+        this.condicao = condicao;
+        Estado = estado;
+    }
+
+    public Livro(int id, String titulo, int quantidade, Autor auto, Editora editora, int isbn, Condicao condicao, Estado estado, String imageUrl) {
+        this.id = id;
+        this.titulo = titulo;
+        this.quantidade = quantidade;
+        this.auto = auto;
+        this.editora = editora;
+        this.isbn = isbn;
+        this.condicao = condicao;
+        Estado = estado;
+        this.imageUrl = imageUrl;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public String getTitulo() {
+        return titulo;
+    }
+
+    public void setTitulo(String titulo) {
+        this.titulo = titulo;
+    }
+
+    public int getQuantidade() {
+        return quantidade;
+    }
+
+    public void setQuantidade(int quantidade) {
+        this.quantidade = quantidade;
+    }
+
+    public Autor getAuto() {
+        return auto;
+    }
+
+    public void setAuto(Autor auto) {
+        this.auto = auto;
+    }
+
+    public Editora getEditora() {
+        return editora;
+    }
+
+    public void setEditora(Editora editora) {
+        this.editora = editora;
+    }
+
+    public int getIsbn() {
+        return isbn;
+    }
+
+    public void setIsbn(int isbn) {
+        this.isbn = isbn;
+    }
+
+    public Condicao getCondicao() {
+        return condicao;
+    }
+
+    public void setCondicao(Condicao condicao) {
+        this.condicao = condicao;
+    }
+
+    public Estado getEstado() {
+        return Estado;
+    }
+
+    public void setEstado(Estado estado) {
+        Estado = estado;
+    }
+
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
+    }
+
+    public LocalDate getDataCriacao() {
+        return dataCriacao;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+        Livro livro = (Livro) o;
+        return id == livro.id;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hashCode(id);
+    }
+}
