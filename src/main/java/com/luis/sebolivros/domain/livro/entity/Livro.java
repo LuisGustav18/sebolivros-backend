@@ -7,11 +7,12 @@ import com.luis.sebolivros.domain.livro.enums.Condicao;
 import com.luis.sebolivros.domain.livro.enums.Estado;
 import jakarta.persistence.*;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.Objects;
 
 @Entity
-public class Livro {
+public class Livro implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

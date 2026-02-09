@@ -4,11 +4,12 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import com.luis.sebolivros.domain.common.enums.Perfil;
 import jakarta.persistence.*;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.Objects;
 
 @Entity
-public class Cliente {
+public class Cliente implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -21,7 +22,7 @@ public class Cliente {
 
     @ElementCollection
     @CollectionTable(name = "PERFIS")
-    private Perfil perfil;
+    private Integer perfil;
 
     @JsonFormat(pattern = "dd/MM/yyyy")
     private LocalDate dataCriacao = LocalDate.now();
@@ -67,11 +68,11 @@ public class Cliente {
     }
 
     public Perfil getPerfil() {
-        return perfil;
+        return Perfil.toEnum(perfil);
     }
 
     public void setPerfil(Perfil perfil) {
-        this.perfil = perfil;
+        this.perfil = perfil.getCodigo();
     }
 
     public LocalDate getDataCriacao() {

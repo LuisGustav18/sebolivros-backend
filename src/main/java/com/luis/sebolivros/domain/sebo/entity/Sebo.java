@@ -4,11 +4,12 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import com.luis.sebolivros.domain.common.enums.Perfil;
 import jakarta.persistence.*;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.Objects;
 
 @Entity
-public class Sebo {
+public class Sebo implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -28,10 +29,11 @@ public class Sebo {
     private LocalDate dataCriacao = LocalDate.now();
 
     public Sebo(){
-
+        setPerfil(Perfil.GESTOR);
     }
 
     public Sebo(int id, String nome, String email, String senha, int cep) {
+        setPerfil(Perfil.GESTOR);
         this.id = id;
         this.nome = nome;
         this.email = email;
@@ -79,7 +81,7 @@ public class Sebo {
         return Perfil.toEnum(perfil);
     }
 
-    public void addPerfil(Perfil perfil) {
+    public void setPerfil(Perfil perfil) {
         this.perfil = perfil.getCodigo();
     }
 

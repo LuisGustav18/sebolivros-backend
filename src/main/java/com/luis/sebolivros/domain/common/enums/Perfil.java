@@ -2,7 +2,7 @@ package com.luis.sebolivros.domain.common.enums;
 
 public enum Perfil {
 
-    CLIENTE(0, "ROLE_ADMIN"),
+    CLIENTE(0, "ROLE_CLIENTE"),
     GESTOR(1, "ROLE_GESTOR");
 
     private Integer codigo;
