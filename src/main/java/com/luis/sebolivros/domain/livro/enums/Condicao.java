@@ -22,12 +22,12 @@ public enum Condicao {
         return descricao;
     }
 
-    public Perfil toEnum(Integer cod){
+    public Condicao toEnum(Integer cod){
         if (cod == null){
             return null;
         }
 
-        for (Perfil x : Perfil.values()){
+        for (Condicao x : Condicao.values()){
             if (cod.equals(x.getCodigo())){
                 return x;
             }

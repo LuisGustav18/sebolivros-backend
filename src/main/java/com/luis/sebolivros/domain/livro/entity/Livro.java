@@ -32,7 +32,7 @@ public class Livro implements Serializable {
 
     private Condicao condicao;
 
-    private Estado Estado;
+    private Estado estado;
 
     private String imageUrl;
 
@@ -53,10 +53,12 @@ public class Livro implements Serializable {
         this.editora = editora;
         this.isbn = isbn;
         this.condicao = condicao;
-        Estado = estado;
+        this.estado = estado;
     }
 
-    public Livro(int id, String titulo, int quantidade, Autor auto, Editora editora, int isbn, Condicao condicao, Estado estado, String imageUrl) {
+    public Livro(int id, String titulo, int quantidade,
+                 Autor auto, Editora editora, int isbn,
+                 Condicao condicao, Estado estado, String imageUrl) {
         this.id = id;
         this.titulo = titulo;
         this.quantidade = quantidade;
@@ -64,7 +66,7 @@ public class Livro implements Serializable {
         this.editora = editora;
         this.isbn = isbn;
         this.condicao = condicao;
-        Estado = estado;
+        this.estado = estado;
         this.imageUrl = imageUrl;
     }
 
@@ -121,11 +123,11 @@ public class Livro implements Serializable {
     }
 
     public Estado getEstado() {
-        return Estado;
+        return estado;
     }
 
     public void setEstado(Estado estado) {
-        Estado = estado;
+        estado = estado;
     }
 
     public String getImageUrl() {
