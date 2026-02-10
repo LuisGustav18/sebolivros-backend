@@ -1,6 +1,7 @@
 package com.luis.sebolivros.domain.autor.entity;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.luis.sebolivros.domain.autor.dto.AutorDTO;
 import com.luis.sebolivros.domain.livro.entity.Livro;
 import jakarta.persistence.*;
 
@@ -15,7 +16,7 @@ public class Autor implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Integer id;
 
     private String nome;
 
@@ -29,13 +30,22 @@ public class Autor implements Serializable {
 
     }
 
-    public Autor(String nome, int id) {
+    public Autor(String nome, Integer id) {
         this.nome = nome;
         this.id = id;
     }
 
+    public Autor(AutorDTO objDto) {
+        this.nome = objDto.getNome();
+        this.id = objDto.getId();
+    }
+
     public int getId() {
         return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getNome() {

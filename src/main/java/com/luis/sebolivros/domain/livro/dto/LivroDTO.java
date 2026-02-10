@@ -10,7 +10,7 @@ import java.time.LocalDate;
 
 public class LivroDTO implements Serializable {
     
-    private int id;
+    private Integer id;
 
     @NotNull(message = "O campo TITULO é requerido")
     private String titulo;
@@ -25,7 +25,7 @@ public class LivroDTO implements Serializable {
     private Integer editora;
 
     @NotNull(message = "O campo ISBN é requerido")
-    private int isbn;
+    private String isbn;
 
     @NotNull(message = "O campo CONDIÇÃO é requerido")
     private Integer condicao;
@@ -53,8 +53,12 @@ public class LivroDTO implements Serializable {
         this.estado = obj.getEstado().getCodigo();
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getTitulo() {
@@ -89,11 +93,11 @@ public class LivroDTO implements Serializable {
         this.editora = editora;
     }
 
-    public int getIsbn() {
+    public String getIsbn() {
         return isbn;
     }
 
-    public void setIsbn(int isbn) {
+    public void setIsbn(String isbn) {
         this.isbn = isbn;
     }
 

@@ -11,7 +11,7 @@ import java.time.LocalDate;
 
 public class SeboDTO implements Serializable {
 
-    private int id;
+    private Integer id;
 
     @NotNull(message = "O campo NOME é requerido")
     private String nome;
@@ -37,8 +37,12 @@ public class SeboDTO implements Serializable {
         this.cep = obj.getCep();
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getEmail() {

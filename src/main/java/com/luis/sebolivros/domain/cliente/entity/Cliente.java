@@ -1,6 +1,7 @@
 package com.luis.sebolivros.domain.cliente.entity;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.luis.sebolivros.domain.cliente.dto.ClienteDTO;
 import com.luis.sebolivros.domain.common.enums.Perfil;
 import jakarta.persistence.*;
 
@@ -13,7 +14,7 @@ public class Cliente implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Integer id;
     private String nome;
 
     @Column(unique = true)
@@ -31,7 +32,7 @@ public class Cliente implements Serializable {
         setPerfil(Perfil.CLIENTE);
     }
 
-    public Cliente(int id, String nome, String email, String senha) {
+    public Cliente(Integer id, String nome, String email, String senha) {
         setPerfil(Perfil.CLIENTE);
         this.id = id;
         this.nome = nome;
@@ -39,8 +40,20 @@ public class Cliente implements Serializable {
         this.senha = senha;
     }
 
-    public int getId() {
+    public Cliente(ClienteDTO objDto) {
+        setPerfil(Perfil.CLIENTE);
+        this.id = objDto.getId();
+        this.nome = objDto.getNome();
+        this.email = objDto.getEmail();
+        this.senha = objDto.getSenha();
+    }
+
+    public Integer getId() {
         return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getNome() {

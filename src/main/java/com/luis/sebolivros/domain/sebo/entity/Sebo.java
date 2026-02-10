@@ -2,6 +2,7 @@ package com.luis.sebolivros.domain.sebo.entity;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.luis.sebolivros.domain.common.enums.Perfil;
+import com.luis.sebolivros.domain.sebo.dto.SeboDTO;
 import jakarta.persistence.*;
 
 import java.io.Serializable;
@@ -13,7 +14,7 @@ public class Sebo implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Integer id;
 
     private String nome;
 
@@ -32,7 +33,7 @@ public class Sebo implements Serializable {
         setPerfil(Perfil.GESTOR);
     }
 
-    public Sebo(int id, String nome, String email, String senha, int cep) {
+    public Sebo(Integer id, String nome, String email, String senha, int cep) {
         setPerfil(Perfil.GESTOR);
         this.id = id;
         this.nome = nome;
@@ -41,8 +42,21 @@ public class Sebo implements Serializable {
         this.cep = cep;
     }
 
-    public int getId() {
+    public Sebo(SeboDTO objDto) {
+        setPerfil(Perfil.GESTOR);
+        this.id = objDto.getId();
+        this.nome = objDto.getNome();
+        this.email = objDto.getEmail();
+        this.senha = objDto.getSenha();
+        this.cep = objDto.getCep();
+    }
+
+    public Integer getId() {
         return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getEmail() {

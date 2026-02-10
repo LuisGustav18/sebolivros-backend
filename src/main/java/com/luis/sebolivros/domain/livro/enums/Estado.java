@@ -21,7 +21,7 @@ public enum Estado {
         return descricao;
     }
 
-    public Estado toenum(Integer cod){
+    public static Estado toenum(Integer cod){
         if (cod == null){
             return null;
         }

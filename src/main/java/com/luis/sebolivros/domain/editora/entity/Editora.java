@@ -1,6 +1,7 @@
 package com.luis.sebolivros.domain.editora.entity;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.luis.sebolivros.domain.editora.dto.EditoraDTO;
 import com.luis.sebolivros.domain.livro.entity.Livro;
 import jakarta.persistence.*;
 
@@ -15,7 +16,7 @@ public class Editora implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Integer id;
 
     private String nome;
 
@@ -29,13 +30,22 @@ public class Editora implements Serializable {
 
     }
 
-    public Editora(String nome, int id) {
+    public Editora(String nome, Integer id) {
         this.nome = nome;
         this.id = id;
     }
 
-    public int getId() {
+    public Editora(EditoraDTO objDto) {
+        this.nome = objDto.getNome();
+        this.id = objDto.getId();
+    }
+
+    public Integer getId() {
         return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getNome() {

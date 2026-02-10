@@ -8,7 +8,7 @@ import java.io.Serializable;
 
 public class AutorDTO implements Serializable {
 
-    private int id;
+    private Integer id;
 
     @NotNull(message = "O campo NOME é requerido")
     private String nome;
@@ -18,8 +18,12 @@ public class AutorDTO implements Serializable {
         this.nome = obj.getNome();
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getNome() {

@@ -11,7 +11,7 @@ import java.time.LocalDate;
 
 public class ClienteDTO implements Serializable {
 
-    private int id;
+    private Integer id;
     @NotNull(message = "O campo NOME é requerido")
     private String nome;
 
@@ -33,8 +33,12 @@ public class ClienteDTO implements Serializable {
         this.senha = obj.getSenha();
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getNome() {

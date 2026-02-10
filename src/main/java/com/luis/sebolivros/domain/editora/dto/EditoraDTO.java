@@ -10,7 +10,7 @@ import java.time.LocalDate;
 
 public class EditoraDTO implements Serializable {
 
-    private int id;
+    private Integer id;
 
     @NotNull(message = "O campo NOME é requerido")
     private String nome;
@@ -27,8 +27,12 @@ public class EditoraDTO implements Serializable {
         this.nome = obj.getNome();
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getNome() {

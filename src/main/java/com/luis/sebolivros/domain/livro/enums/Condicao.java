@@ -22,7 +22,7 @@ public enum Condicao {
         return descricao;
     }
 
-    public Condicao toEnum(Integer cod){
+    public static Condicao toEnum(Integer cod){
         if (cod == null){
             return null;
         }

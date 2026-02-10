@@ -3,6 +3,7 @@ package com.luis.sebolivros.domain.livro.entity;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.luis.sebolivros.domain.editora.entity.Editora;
 import com.luis.sebolivros.domain.autor.entity.Autor;
+import com.luis.sebolivros.domain.livro.dto.LivroDTO;
 import com.luis.sebolivros.domain.livro.enums.Condicao;
 import com.luis.sebolivros.domain.livro.enums.Estado;
 import jakarta.persistence.*;
@@ -16,7 +17,7 @@ public class Livro implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Integer id;
     private String titulo;
     private int quantidade;
 
@@ -28,7 +29,8 @@ public class Livro implements Serializable {
     @JoinColumn(name = "editora_id")
     private Editora editora;
 
-    private int isbn;
+    @Column(unique = true)
+    private String isbn;
 
     private Condicao condicao;
 
@@ -43,8 +45,8 @@ public class Livro implements Serializable {
 
     }
 
-    public Livro(int id, String titulo, int quantidade,
-                 Autor auto, Editora editora, int isbn,
+    public Livro(Integer id, String titulo, int quantidade,
+                 Autor auto, Editora editora, String isbn,
                  Condicao condicao, Estado estado) {
         this.id = id;
         this.titulo = titulo;
@@ -56,8 +58,8 @@ public class Livro implements Serializable {
         this.estado = estado;
     }
 
-    public Livro(int id, String titulo, int quantidade,
-                 Autor auto, Editora editora, int isbn,
+    public Livro(Integer id, String titulo, int quantidade,
+                 Autor auto, Editora editora, String isbn,
                  Condicao condicao, Estado estado, String imageUrl) {
         this.id = id;
         this.titulo = titulo;
@@ -70,8 +72,12 @@ public class Livro implements Serializable {
         this.imageUrl = imageUrl;
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getTitulo() {
@@ -106,11 +112,11 @@ public class Livro implements Serializable {
         this.editora = editora;
     }
 
-    public int getIsbn() {
+    public String getIsbn() {
         return isbn;
     }
 
-    public void setIsbn(int isbn) {
+    public void setIsbn(String isbn) {
         this.isbn = isbn;
     }
 
