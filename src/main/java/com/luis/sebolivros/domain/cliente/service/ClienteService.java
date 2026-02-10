@@ -3,7 +3,7 @@ package com.luis.sebolivros.domain.cliente.service;
 import com.luis.sebolivros.domain.cliente.dto.ClienteDTO;
 import com.luis.sebolivros.domain.cliente.entity.Cliente;
 import com.luis.sebolivros.domain.cliente.repository.ClienteRepository;
-import com.luis.sebolivros.domain.common.exceptions.ObjectNotFoundException;
+import com.luis.sebolivros.exceptions.ObjectNotFoundException;
 import com.luis.sebolivros.domain.sebo.entity.Sebo;
 import com.luis.sebolivros.domain.sebo.repository.SeboRepository;
 import org.springframework.beans.factory.annotation.Autowired;

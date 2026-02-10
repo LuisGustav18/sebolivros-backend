@@ -1,4 +1,4 @@
-package com.luis.sebolivros.domain.common.exceptions;
+package com.luis.sebolivros.exceptions;
 
 public class ObjectNotFoundException extends RuntimeException {
 

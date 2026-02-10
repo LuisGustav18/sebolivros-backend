@@ -3,7 +3,7 @@ package com.luis.sebolivros.domain.autor.service;
 import com.luis.sebolivros.domain.autor.dto.AutorDTO;
 import com.luis.sebolivros.domain.autor.entity.Autor;
 import com.luis.sebolivros.domain.autor.repository.AutorRepository;
-import com.luis.sebolivros.domain.common.exceptions.ObjectNotFoundException;
+import com.luis.sebolivros.exceptions.ObjectNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;

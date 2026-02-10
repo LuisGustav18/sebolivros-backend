@@ -1,6 +1,6 @@
 package com.luis.sebolivros.domain.editora.service;
 
-import com.luis.sebolivros.domain.common.exceptions.ObjectNotFoundException;
+import com.luis.sebolivros.exceptions.ObjectNotFoundException;
 import com.luis.sebolivros.domain.editora.dto.EditoraDTO;
 import com.luis.sebolivros.domain.editora.entity.Editora;
 import com.luis.sebolivros.domain.editora.repository.EditoraRepository;

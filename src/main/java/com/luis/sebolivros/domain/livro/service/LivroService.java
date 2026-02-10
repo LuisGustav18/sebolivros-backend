@@ -2,7 +2,7 @@ package com.luis.sebolivros.domain.livro.service;
 
 import com.luis.sebolivros.domain.autor.entity.Autor;
 import com.luis.sebolivros.domain.autor.service.AutorService;
-import com.luis.sebolivros.domain.common.exceptions.ObjectNotFoundException;
+import com.luis.sebolivros.exceptions.ObjectNotFoundException;
 import com.luis.sebolivros.domain.editora.entity.Editora;
 import com.luis.sebolivros.domain.editora.service.EditoraService;
 import com.luis.sebolivros.domain.livro.dto.LivroDTO;
