@@ -1,5 +1,6 @@
 package com.luis.sebolivros.domain.sebo.repository;
 
+import com.luis.sebolivros.domain.livro.entity.Livro;
 import com.luis.sebolivros.domain.sebo.entity.Sebo;
 import org.springframework.data.jpa.repository.JpaRepository;
 

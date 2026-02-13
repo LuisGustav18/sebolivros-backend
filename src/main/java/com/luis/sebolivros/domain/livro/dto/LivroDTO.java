@@ -19,7 +19,7 @@ public class LivroDTO implements Serializable {
     private int quantidade;
 
     @NotNull(message = "O campo AUTOR é requerido")
-    private Integer auto;
+    private Integer autor;
 
     @NotNull(message = "O campo EDITORA é requerido")
     private Integer editora;
@@ -33,7 +33,16 @@ public class LivroDTO implements Serializable {
     @NotNull(message = "O campo ESTADO é requerido")
     private Integer estado;
 
+    @NotNull(message = "O campo ESTADO é requerido")
+    private Integer sebo;
+
     private String imageUrl;
+
+    private String nomeSebo;
+
+    private String nomeAutor;
+
+    private String nomeEditora;
 
     @JsonFormat(pattern = "dd/MM/yyyy")
     private LocalDate dataCriacao = LocalDate.now();
@@ -46,11 +55,15 @@ public class LivroDTO implements Serializable {
         this.id = obj.getId();
         this.titulo = obj.getTitulo();
         this.quantidade = obj.getQuantidade();
-        this.auto = obj.getAuto().getId();
+        this.autor = obj.getAutor().getId();
         this.editora = obj.getEditora().getId();
         this.isbn = obj.getIsbn();
         this.condicao = obj.getCondicao().getCodigo();
         this.estado = obj.getEstado().getCodigo();
+        this.sebo = obj.getSebo().getId();
+        this.nomeSebo = obj.getSebo().getNome();
+        this.nomeAutor = obj.getAutor().getNome();
+        this.nomeEditora = obj.getEditora().getNome();
     }
 
     public Integer getId() {
@@ -77,12 +90,12 @@ public class LivroDTO implements Serializable {
         this.quantidade = quantidade;
     }
 
-    public Integer getAuto() {
-        return auto;
+    public Integer getAutor() {
+        return autor;
     }
 
-    public void setAuto(Integer auto) {
-        this.auto = auto;
+    public void setAutor(Integer autor) {
+        this.autor = autor;
     }
 
     public Integer getEditora() {
@@ -114,7 +127,7 @@ public class LivroDTO implements Serializable {
     }
 
     public void setEstado(Integer estado) {
-        estado = estado;
+        this.estado = estado;
     }
 
     public String getImageUrl() {
@@ -127,5 +140,13 @@ public class LivroDTO implements Serializable {
 
     public LocalDate getDataCriacao() {
         return dataCriacao;
+    }
+
+    public Integer getSebo() {
+        return sebo;
+    }
+
+    public void setSebo(Integer sebo) {
+        this.sebo = sebo;
     }
 }

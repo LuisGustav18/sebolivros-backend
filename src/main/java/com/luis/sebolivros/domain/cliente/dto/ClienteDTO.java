@@ -26,11 +26,16 @@ public class ClienteDTO implements Serializable {
     @JsonFormat(pattern = "dd/MM/yyyy")
     private LocalDate dataCriacao = LocalDate.now();
 
+    public ClienteDTO() {
+        setPerfil(Perfil.CLIENTE);
+    }
+
     public ClienteDTO(Cliente obj) {
         this.id = obj.getId();
         this.nome = obj.getNome();
         this.email = obj.getEmail();
         this.senha = obj.getSenha();
+        setPerfil(Perfil.CLIENTE);
     }
 
     public Integer getId() {

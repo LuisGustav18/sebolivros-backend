@@ -22,12 +22,15 @@ public class SeboDTO implements Serializable {
     @NotNull(message = "O campo SENHA é requerido")
     private String senha;
 
-    private int cep;
+    private String cep;
 
     private Integer perfil;
 
     @JsonFormat(pattern = "dd/MM/yyyy")
     private LocalDate dataCriacao = LocalDate.now();
+
+    public SeboDTO() {
+    }
 
     public SeboDTO(Sebo obj) {
         this.id = obj.getId();
@@ -35,6 +38,7 @@ public class SeboDTO implements Serializable {
         this.email = obj.getEmail();
         this.senha = obj.getSenha();
         this.cep = obj.getCep();
+        setPerfil(Perfil.GESTOR);
     }
 
     public Integer getId() {
@@ -69,11 +73,11 @@ public class SeboDTO implements Serializable {
         this.senha = senha;
     }
 
-    public int getCep() {
+    public String getCep() {
         return cep;
     }
 
-    public void setCep(int cep) {
+    public void setCep(String cep) {
         this.cep = cep;
     }
 

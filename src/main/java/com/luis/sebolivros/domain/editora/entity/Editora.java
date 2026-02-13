@@ -20,9 +20,6 @@ public class Editora implements Serializable {
 
     private String nome;
 
-    @OneToMany(mappedBy = "editora")
-    private List<Livro> livros = new ArrayList<>();
-
     @JsonFormat(pattern = "dd/MM/yyyy")
     private LocalDate dataCriacao = LocalDate.now();
 
@@ -54,10 +51,6 @@ public class Editora implements Serializable {
 
     public void setNome(String nome) {
         this.nome = nome;
-    }
-
-    public List<Livro> getLivros() {
-        return livros;
     }
 
     public LocalDate getDataCriacao() {

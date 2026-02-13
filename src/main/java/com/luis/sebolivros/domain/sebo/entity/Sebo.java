@@ -2,11 +2,14 @@ package com.luis.sebolivros.domain.sebo.entity;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.luis.sebolivros.domain.common.enums.Perfil;
+import com.luis.sebolivros.domain.livro.entity.Livro;
 import com.luis.sebolivros.domain.sebo.dto.SeboDTO;
 import jakarta.persistence.*;
 
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 @Entity
@@ -22,9 +25,12 @@ public class Sebo implements Serializable {
     private String email;
     private String senha;
 
-    private int cep;
+    private String cep;
 
     private Integer perfil;
+
+    @OneToMany(mappedBy = "sebo")
+    private List<Livro> livros = new ArrayList<>();
 
     @JsonFormat(pattern = "dd/MM/yyyy")
     private LocalDate dataCriacao = LocalDate.now();
@@ -33,7 +39,7 @@ public class Sebo implements Serializable {
         setPerfil(Perfil.GESTOR);
     }
 
-    public Sebo(Integer id, String nome, String email, String senha, int cep) {
+    public Sebo(Integer id, String nome, String email, String senha, String cep) {
         setPerfil(Perfil.GESTOR);
         this.id = id;
         this.nome = nome;
@@ -83,11 +89,11 @@ public class Sebo implements Serializable {
         this.senha = senha;
     }
 
-    public int getCep() {
+    public String getCep() {
         return cep;
     }
 
-    public void setCep(int cep) {
+    public void setCep(String cep) {
         this.cep = cep;
     }
 
@@ -101,6 +107,14 @@ public class Sebo implements Serializable {
 
     public LocalDate getDataCriacao() {
         return dataCriacao;
+    }
+
+    public List<Livro> getLivros() {
+        return livros;
+    }
+
+    public void setLivros(List<Livro> livros) {
+        this.livros = livros;
     }
 
     @Override

@@ -21,8 +21,6 @@ public class Cliente implements Serializable {
     private String email;
     private String senha;
 
-    @ElementCollection
-    @CollectionTable(name = "PERFIS")
     private Integer perfil;
 
     @JsonFormat(pattern = "dd/MM/yyyy")

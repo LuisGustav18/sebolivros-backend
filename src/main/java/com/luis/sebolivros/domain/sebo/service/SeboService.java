@@ -2,6 +2,7 @@ package com.luis.sebolivros.domain.sebo.service;
 
 import com.luis.sebolivros.domain.cliente.entity.Cliente;
 import com.luis.sebolivros.domain.cliente.repository.ClienteRepository;
+import com.luis.sebolivros.domain.livro.entity.Livro;
 import com.luis.sebolivros.exceptions.ObjectNotFoundException;
 import com.luis.sebolivros.domain.sebo.dto.SeboDTO;
 import com.luis.sebolivros.domain.sebo.entity.Sebo;
