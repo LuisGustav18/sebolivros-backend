@@ -1,11 +1,9 @@
-package com.luis.sebolivros.domain.common.Service;
+package com.luis.sebolivros.domain.common.service;
 
 import com.luis.sebolivros.domain.autor.entity.Autor;
 import com.luis.sebolivros.domain.autor.repository.AutorRepository;
-import com.luis.sebolivros.domain.cliente.dto.ClienteDTO;
 import com.luis.sebolivros.domain.cliente.entity.Cliente;
 import com.luis.sebolivros.domain.cliente.repository.ClienteRepository;
-import com.luis.sebolivros.domain.common.enums.Perfil;
 import com.luis.sebolivros.domain.editora.entity.Editora;
 import com.luis.sebolivros.domain.editora.repository.EditoraRepository;
 import com.luis.sebolivros.domain.livro.entity.Livro;
@@ -14,7 +12,6 @@ import com.luis.sebolivros.domain.livro.enums.Estado;
 import com.luis.sebolivros.domain.livro.repository.LivroRepository;
 import com.luis.sebolivros.domain.sebo.entity.Sebo;
 import com.luis.sebolivros.domain.sebo.repository.SeboRepository;
-import com.luis.sebolivros.domain.sebo.resource.SeboResource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -87,13 +84,13 @@ public class DBService {
                 sebo01, sebo02, sebo03,
                 sebo04, sebo05));
 
-        editoraRepository.saveAll(Arrays.asList(
-                editora01, editora02, editora03,
-                editora04, editora05, editora06));
-
         autorRepository.saveAll(Arrays.asList(
                 autor01, autor02, autor03, autor04,
                 autor05, autor06, autor07, autor08));
+
+        editoraRepository.saveAll(Arrays.asList(
+                editora01, editora02, editora03,
+                editora04, editora05, editora06));
 
         livroRepository.saveAll(Arrays.asList(
                 livro01, livro02, livro03, livro04,
