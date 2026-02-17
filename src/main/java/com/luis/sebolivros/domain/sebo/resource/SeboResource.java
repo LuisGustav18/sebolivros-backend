@@ -7,6 +7,7 @@ import com.luis.sebolivros.domain.sebo.dto.SeboDTO;
 import com.luis.sebolivros.domain.sebo.dto.SeboLivrosDTO;
 import com.luis.sebolivros.domain.sebo.entity.Sebo;
 import com.luis.sebolivros.domain.sebo.service.SeboService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -44,14 +45,14 @@ public class SeboResource {
     }
 
     @PostMapping
-    public ResponseEntity<SeboDTO> create(@RequestBody SeboDTO objDto){
+    public ResponseEntity<SeboDTO> create(@Valid @RequestBody SeboDTO objDto){
         Sebo obj = service.create(objDto);
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(obj.getId()).toUri();
         return ResponseEntity.created(uri).build();
     }
 
     @PutMapping(value = "/{id}")
-    public ResponseEntity<SeboDTO> update(@PathVariable Integer id, @RequestBody SeboDTO objDto){
+    public ResponseEntity<SeboDTO> update(@PathVariable Integer id,@Valid @RequestBody SeboDTO objDto){
         Sebo obj = service.update(id, objDto);
         return ResponseEntity.ok().body(new SeboDTO(obj));
     }

@@ -8,7 +8,7 @@ import com.luis.sebolivros.domain.sebo.dto.SeboDTO;
 import com.luis.sebolivros.domain.sebo.entity.Sebo;
 import com.luis.sebolivros.domain.sebo.repository.SeboRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.dao.DataIntegrityViolationException;
+import com.luis.sebolivros.exceptions.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

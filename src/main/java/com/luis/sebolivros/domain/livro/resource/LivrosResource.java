@@ -3,6 +3,7 @@ package com.luis.sebolivros.domain.livro.resource;
 import com.luis.sebolivros.domain.livro.dto.LivroDTO;
 import com.luis.sebolivros.domain.livro.entity.Livro;
 import com.luis.sebolivros.domain.livro.service.LivroService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -33,14 +34,14 @@ public class LivrosResource {
     }
 
     @PostMapping
-    public ResponseEntity<LivroDTO> create(@RequestBody LivroDTO objDto){
+    public ResponseEntity<LivroDTO> create(@Valid @RequestBody LivroDTO objDto){
         Livro obj = service.create(objDto);
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(obj.getId()).toUri();
         return ResponseEntity.created(uri).build();
     }
 
     @PutMapping(value = "/{id}")
-    public ResponseEntity<LivroDTO> update(@PathVariable Integer id, @RequestBody LivroDTO objDto){
+    public ResponseEntity<LivroDTO> update(@PathVariable Integer id,@Valid @RequestBody LivroDTO objDto){
         Livro obj = service.update(id, objDto);
         return ResponseEntity.ok().body(new LivroDTO(obj));
     }

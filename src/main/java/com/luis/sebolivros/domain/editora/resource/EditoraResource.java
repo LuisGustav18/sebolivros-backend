@@ -3,6 +3,7 @@ package com.luis.sebolivros.domain.editora.resource;
 import com.luis.sebolivros.domain.editora.dto.EditoraDTO;
 import com.luis.sebolivros.domain.editora.entity.Editora;
 import com.luis.sebolivros.domain.editora.service.EditoraService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -33,14 +34,14 @@ public class EditoraResource {
     }
 
     @PostMapping
-    public ResponseEntity<EditoraDTO> create(@RequestBody EditoraDTO objDto){
+    public ResponseEntity<EditoraDTO> create(@Valid @RequestBody EditoraDTO objDto){
         Editora obj = service.create(objDto);
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(obj.getId()).toUri();
         return ResponseEntity.created(uri).build();
     }
 
     @PutMapping(value = "/{id}")
-    public ResponseEntity<EditoraDTO> update(@PathVariable Integer id, @RequestBody EditoraDTO objDto){
+    public ResponseEntity<EditoraDTO> update(@PathVariable Integer id,@Valid @RequestBody EditoraDTO objDto){
         Editora obj = service.update(id, objDto);
         return ResponseEntity.ok().body(new EditoraDTO(obj));
     }

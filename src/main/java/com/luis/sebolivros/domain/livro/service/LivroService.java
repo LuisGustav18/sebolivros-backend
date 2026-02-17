@@ -3,7 +3,6 @@ package com.luis.sebolivros.domain.livro.service;
 import com.luis.sebolivros.domain.autor.entity.Autor;
 import com.luis.sebolivros.domain.autor.service.AutorService;
 import com.luis.sebolivros.domain.sebo.entity.Sebo;
-import com.luis.sebolivros.domain.sebo.resource.SeboResource;
 import com.luis.sebolivros.domain.sebo.service.SeboService;
 import com.luis.sebolivros.exceptions.ObjectNotFoundException;
 import com.luis.sebolivros.domain.editora.entity.Editora;
@@ -14,7 +13,7 @@ import com.luis.sebolivros.domain.livro.enums.Condicao;
 import com.luis.sebolivros.domain.livro.enums.Estado;
 import com.luis.sebolivros.domain.livro.repository.LivroRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.dao.DataIntegrityViolationException;
+import com.luis.sebolivros.exceptions.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
