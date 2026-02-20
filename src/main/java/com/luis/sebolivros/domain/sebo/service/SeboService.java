@@ -9,6 +9,8 @@ import com.luis.sebolivros.domain.sebo.entity.Sebo;
 import com.luis.sebolivros.domain.sebo.repository.SeboRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import com.luis.sebolivros.exceptions.DataIntegrityViolationException;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -21,7 +23,10 @@ public class SeboService {
     private SeboRepository repository;
 
     @Autowired
-    private ClienteRepository clienteRepository ;
+    private ClienteRepository clienteRepository;
+
+    @Autowired
+    private PasswordEncoder encoder;
 
     public Sebo findById(int id){
         Optional<Sebo> obj = repository.findById(id);
@@ -35,12 +40,14 @@ public class SeboService {
     public Sebo create(SeboDTO objDto){
         objDto.setId(null);
         validarEmail(objDto);
+        objDto.setSenha(encoder.encode(objDto.getSenha()));
         return repository.save(new Sebo(objDto));
     }
 
     public Sebo update(Integer id, SeboDTO objDto){
         objDto.setId(id);
         validarEmail(objDto);
+        objDto.setSenha(encoder.encode(objDto.getSenha()));
         Sebo oldObj = findById(id);
         oldObj = new Sebo(objDto);
         return repository.save(oldObj);

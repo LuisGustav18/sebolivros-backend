@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import com.luis.sebolivros.domain.common.enums.Perfil;
 import com.luis.sebolivros.domain.livro.entity.Livro;
 import com.luis.sebolivros.domain.sebo.dto.SeboDTO;
+import com.luis.sebolivros.domain.usuario.entity.Usuario;
 import jakarta.persistence.*;
 
 import java.io.Serializable;
@@ -13,17 +14,7 @@ import java.util.List;
 import java.util.Objects;
 
 @Entity
-public class Sebo implements Serializable {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
-
-    private String nome;
-
-    @Column(unique = true)
-    private String email;
-    private String senha;
+public class Sebo extends Usuario {
 
     private String cep;
 
@@ -36,16 +27,14 @@ public class Sebo implements Serializable {
     private LocalDate dataCriacao = LocalDate.now();
 
     public Sebo(){
+        super();
         setPerfil(Perfil.GESTOR);
     }
 
     public Sebo(Integer id, String nome, String email, String senha, String cep) {
-        setPerfil(Perfil.GESTOR);
-        this.id = id;
-        this.nome = nome;
-        this.email = email;
-        this.senha = senha;
+        super(senha, email, nome, id);
         this.cep = cep;
+        setPerfil(Perfil.GESTOR);
     }
 
     public Sebo(SeboDTO objDto) {
@@ -55,38 +44,6 @@ public class Sebo implements Serializable {
         this.email = objDto.getEmail();
         this.senha = objDto.getSenha();
         this.cep = objDto.getCep();
-    }
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getNome() {
-        return nome;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
-    public String getSenha() {
-        return senha;
-    }
-
-    public void setSenha(String senha) {
-        this.senha = senha;
     }
 
     public String getCep() {

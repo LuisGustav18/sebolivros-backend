@@ -7,6 +7,7 @@ import com.luis.sebolivros.domain.autor.service.AutorService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
@@ -41,6 +42,7 @@ public class AutorResource {
         return ResponseEntity.ok().body(listDto);
     }
 
+    @PreAuthorize("hasAnyRole('GESTOR')")
     @PostMapping
     public ResponseEntity<AutorDTO> create(@Valid @RequestBody AutorDTO objDto){
         Autor obj = service.create(objDto);
@@ -48,12 +50,14 @@ public class AutorResource {
         return ResponseEntity.created(uri).build();
     }
 
+    @PreAuthorize("hasAnyRole('GESTOR')")
     @PutMapping(value = "/{id}")
     public ResponseEntity<AutorDTO> update(@PathVariable Integer id,@Valid @RequestBody AutorDTO objDto){
         Autor obj = service.update(id, objDto);
         return ResponseEntity.ok().body(new AutorDTO(obj));
     }
 
+    @PreAuthorize("hasAnyRole('GESTOR')")
     @DeleteMapping(value = "/{id}")
     public ResponseEntity<Void> delete(@PathVariable int id){
         service.delete(id);

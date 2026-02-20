@@ -13,6 +13,8 @@ import com.luis.sebolivros.domain.livro.repository.LivroRepository;
 import com.luis.sebolivros.domain.sebo.entity.Sebo;
 import com.luis.sebolivros.domain.sebo.repository.SeboRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.Arrays;
@@ -35,6 +37,9 @@ public class DBService {
     @Autowired
     private SeboRepository seboRepository;
 
+    @Autowired
+    private PasswordEncoder encoder;
+
     public void instaciaDB(){
 
         Autor autor01 = new Autor("Homero", null);
@@ -53,11 +58,11 @@ public class DBService {
         Editora editora05 = new Editora("Rocco", null);
         Editora editora06 = new Editora("Martins Fontes", null);
 
-        Sebo sebo01 = new Sebo(null, "Maravilha", "maravilha@gmail.com", "123", "38204-054");
-        Sebo sebo02 = new Sebo(null, "Sebo Central", "central@gmail.com", "123", "38400-000");
-        Sebo sebo03 = new Sebo(null, "Sebo Antiguidades", "antigo@gmail.com", "123", "38300-000");
-        Sebo sebo04 = new Sebo(null, "Sebo Universitário", "uni@gmail.com", "123", "38500-000");
-        Sebo sebo05 = new Sebo(null, "Sebo Vintage", "vintage@gmail.com", "123", "38600-000");
+        Sebo sebo01 = new Sebo(null, "Maravilha", "maravilha@gmail.com", encoder.encode("123"), "38204-054");
+        Sebo sebo02 = new Sebo(null, "Sebo Central", "central@gmail.com", encoder.encode("123"), "38400-000");
+        Sebo sebo03 = new Sebo(null, "Sebo Antiguidades", "antigo@gmail.com", encoder.encode("123"), "38300-000");
+        Sebo sebo04 = new Sebo(null, "Sebo Universitário", "uni@gmail.com", encoder.encode("123"), "38500-000");
+        Sebo sebo05 = new Sebo(null, "Sebo Vintage", "vintage@gmail.com", encoder.encode("123"), "38600-000");
 
 
         Livro livro01 = new Livro(null, "A Odisseia", 3, autor01, editora01, "9788563560271", Condicao.CONSERVADO, Estado.DISPONIVEL, sebo01);
@@ -74,11 +79,11 @@ public class DBService {
         Livro livro12 = new Livro(null, "Memórias Póstumas de Brás Cubas", 4, autor03, editora04, "9788535922222", Condicao.CONSERVADO, Estado.DISPONIVEL, sebo02);
         Livro livro13 = new Livro(null, "Crime e Castigo", 2, autor07, editora06, "9788571648502", Condicao.CONSERVADO, Estado.DISPONIVEL, sebo02);
 
-        Cliente cliente01 = new Cliente(null, "Marcos", "marcos@gmail.com", "123");
-        Cliente cliente02 = new Cliente(null, "Ana Paula", "ana.paula@gmail.com", "123");
-        Cliente cliente03 = new Cliente(null, "João Pedro", "joao.pedro@gmail.com", "123");
-        Cliente cliente04 = new Cliente(null, "Lucas Silva", "lucas.silva@gmail.com", "123");
-        Cliente cliente05 = new Cliente(null, "Beatriz Santos", "beatriz.santos@gmail.com", "123");
+        Cliente cliente01 = new Cliente(null, "Marcos", "marcos@gmail.com", encoder.encode("123"));
+        Cliente cliente02 = new Cliente(null, "Ana Paula", "ana.paula@gmail.com", encoder.encode("123"));
+        Cliente cliente03 = new Cliente(null, "João Pedro", "joao.pedro@gmail.com", encoder.encode("123"));
+        Cliente cliente04 = new Cliente(null, "Lucas Silva", "lucas.silva@gmail.com", encoder.encode("123"));
+        Cliente cliente05 = new Cliente(null, "Beatriz Santos", "beatriz.santos@gmail.com", encoder.encode("123"));
 
         seboRepository.saveAll(Arrays.asList(
                 sebo01, sebo02, sebo03,

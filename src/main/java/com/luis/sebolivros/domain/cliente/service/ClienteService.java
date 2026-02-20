@@ -8,6 +8,8 @@ import com.luis.sebolivros.domain.sebo.entity.Sebo;
 import com.luis.sebolivros.domain.sebo.repository.SeboRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import com.luis.sebolivros.exceptions.DataIntegrityViolationException;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -22,6 +24,9 @@ public class ClienteService {
     @Autowired
     private SeboRepository seboRepository;
 
+    @Autowired
+    private PasswordEncoder encoder;
+
     public Cliente findById(int id){
         Optional<Cliente> obj = repository.findById(id);
         return obj.orElseThrow(() -> new ObjectNotFoundException("Cliente não encontrado"));
@@ -34,12 +39,14 @@ public class ClienteService {
     public Cliente create(ClienteDTO objDto){
         objDto.setId(null);
         validarEmail(objDto);
+        objDto.setSenha(encoder.encode(objDto.getSenha()));
         return repository.save(new Cliente(objDto));
     }
 
     public Cliente update(Integer id, ClienteDTO objDto){
         objDto.setId(id);
         validarEmail(objDto);
+        objDto.setSenha(encoder.encode(objDto.getSenha()));
         Cliente oldObj = findById(id);
         oldObj = new Cliente(objDto);
         return repository.save(oldObj);

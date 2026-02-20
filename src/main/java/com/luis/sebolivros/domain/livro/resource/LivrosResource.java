@@ -6,6 +6,7 @@ import com.luis.sebolivros.domain.livro.service.LivroService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
@@ -33,6 +34,7 @@ public class LivrosResource {
         return ResponseEntity.ok().body(listDto);
     }
 
+    @PreAuthorize("hasAnyRole('GESTOR')")
     @PostMapping
     public ResponseEntity<LivroDTO> create(@Valid @RequestBody LivroDTO objDto){
         Livro obj = service.create(objDto);
@@ -40,6 +42,7 @@ public class LivrosResource {
         return ResponseEntity.created(uri).build();
     }
 
+    @PreAuthorize("hasAnyRole('GESTOR')")
     @PutMapping(value = "/{id}")
     public ResponseEntity<LivroDTO> update(@PathVariable Integer id,@Valid @RequestBody LivroDTO objDto){
         Livro obj = service.update(id, objDto);

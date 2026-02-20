@@ -6,6 +6,7 @@ import com.luis.sebolivros.domain.editora.service.EditoraService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
@@ -33,6 +34,7 @@ public class EditoraResource {
         return ResponseEntity.ok().body(listDto);
     }
 
+    @PreAuthorize("hasAnyRole('GESTOR')")
     @PostMapping
     public ResponseEntity<EditoraDTO> create(@Valid @RequestBody EditoraDTO objDto){
         Editora obj = service.create(objDto);
@@ -40,12 +42,14 @@ public class EditoraResource {
         return ResponseEntity.created(uri).build();
     }
 
+    @PreAuthorize("hasAnyRole('GESTOR')")
     @PutMapping(value = "/{id}")
     public ResponseEntity<EditoraDTO> update(@PathVariable Integer id,@Valid @RequestBody EditoraDTO objDto){
         Editora obj = service.update(id, objDto);
         return ResponseEntity.ok().body(new EditoraDTO(obj));
     }
 
+    @PreAuthorize("hasAnyRole('GESTOR')")
     @DeleteMapping(value = "/{id}")
     public ResponseEntity<Void> delete(@PathVariable int id){
         service.delete(id);
