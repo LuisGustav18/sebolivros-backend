@@ -30,6 +30,15 @@ public class SeboDTO implements Serializable {
     private LocalDate dataCriacao = LocalDate.now();
 
     public SeboDTO() {
+        setPerfil(Perfil.GESTOR);
+    }
+
+    public SeboDTO(String nome, String email, String senha, String cep) {
+        this.nome = nome;
+        this.email = email;
+        this.senha = senha;
+        this.cep = cep;
+        setPerfil(Perfil.GESTOR);
     }
 
     public SeboDTO(Sebo obj) {

@@ -30,6 +30,13 @@ public class ClienteDTO implements Serializable {
         setPerfil(Perfil.CLIENTE);
     }
 
+    public ClienteDTO(String nome, String email, String senha) {
+        this.nome = nome;
+        this.email = email;
+        this.senha = senha;
+        setPerfil(Perfil.CLIENTE);
+    }
+
     public ClienteDTO(Cliente obj) {
         this.id = obj.getId();
         this.nome = obj.getNome();

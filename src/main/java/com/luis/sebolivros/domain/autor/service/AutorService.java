@@ -27,9 +27,6 @@ public class AutorService {
     }
 
     public Autor create(AutorDTO objDto){
-        if (repository.findByNome(objDto.getNome()) != null){
-            throw new DataIntegrityViolationException("Autor já cadastrado");
-        }
         objDto.setId(null);
         return repository.save(new Autor(objDto));
     }

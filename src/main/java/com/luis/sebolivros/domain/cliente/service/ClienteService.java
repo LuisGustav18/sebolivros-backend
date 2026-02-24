@@ -3,6 +3,8 @@ package com.luis.sebolivros.domain.cliente.service;
 import com.luis.sebolivros.domain.cliente.dto.ClienteDTO;
 import com.luis.sebolivros.domain.cliente.entity.Cliente;
 import com.luis.sebolivros.domain.cliente.repository.ClienteRepository;
+import com.luis.sebolivros.domain.usuario.entity.Usuario;
+import com.luis.sebolivros.domain.usuario.repository.UsuarioRepository;
 import com.luis.sebolivros.exceptions.ObjectNotFoundException;
 import com.luis.sebolivros.domain.sebo.entity.Sebo;
 import com.luis.sebolivros.domain.sebo.repository.SeboRepository;
@@ -22,7 +24,7 @@ public class ClienteService {
     private ClienteRepository repository;
 
     @Autowired
-    private SeboRepository seboRepository;
+    private UsuarioRepository usuarioRepository;
 
     @Autowired
     private PasswordEncoder encoder;
@@ -58,10 +60,9 @@ public class ClienteService {
     }
 
     private void validarEmail(ClienteDTO objDto){
-        Optional<Cliente> cliente = repository.findByEmail(objDto.getEmail());
-        Optional<Sebo> sebo = seboRepository.findByEmail(objDto.getEmail());
+        Optional<Usuario> obj = usuarioRepository.findByEmail(objDto.getEmail());
 
-        if (cliente.isPresent() || sebo.isPresent()){
+        if (obj.isPresent()){
             throw new DataIntegrityViolationException("Email já cadastrado");
         }
     }

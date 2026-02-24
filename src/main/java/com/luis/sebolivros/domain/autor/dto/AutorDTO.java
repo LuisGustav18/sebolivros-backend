@@ -17,6 +17,10 @@ public class AutorDTO implements Serializable {
 
     }
 
+    public AutorDTO(String nome) {
+        this.nome = nome;
+    }
+
     public AutorDTO(Autor obj) {
         this.id = obj.getId();
         this.nome = obj.getNome();
