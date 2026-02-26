@@ -1,9 +1,5 @@
 package com.luis.sebolivros.domain.sebo.service;
 
-import com.luis.sebolivros.domain.cliente.dto.ClienteDTO;
-import com.luis.sebolivros.domain.cliente.entity.Cliente;
-import com.luis.sebolivros.domain.cliente.repository.ClienteRepository;
-import com.luis.sebolivros.domain.livro.entity.Livro;
 import com.luis.sebolivros.domain.usuario.entity.Usuario;
 import com.luis.sebolivros.domain.usuario.repository.UsuarioRepository;
 import com.luis.sebolivros.exceptions.ObjectNotFoundException;
@@ -12,7 +8,6 @@ import com.luis.sebolivros.domain.sebo.entity.Sebo;
 import com.luis.sebolivros.domain.sebo.repository.SeboRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import com.luis.sebolivros.exceptions.DataIntegrityViolationException;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 

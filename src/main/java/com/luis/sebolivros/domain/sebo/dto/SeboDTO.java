@@ -33,7 +33,8 @@ public class SeboDTO implements Serializable {
         setPerfil(Perfil.GESTOR);
     }
 
-    public SeboDTO(String nome, String email, String senha, String cep) {
+    public SeboDTO(Integer id, String nome, String email, String senha, String cep) {
+        this.id = id;
         this.nome = nome;
         this.email = email;
         this.senha = senha;

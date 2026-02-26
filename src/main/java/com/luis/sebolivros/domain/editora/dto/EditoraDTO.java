@@ -22,6 +22,10 @@ public class EditoraDTO implements Serializable {
 
     }
 
+    public EditoraDTO(String nome) {
+        this.nome = nome;
+    }
+
     public EditoraDTO(Editora obj) {
         this.id = obj.getId();
         this.nome = obj.getNome();

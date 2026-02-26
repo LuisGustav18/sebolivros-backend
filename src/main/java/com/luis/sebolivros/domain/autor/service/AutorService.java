@@ -40,7 +40,7 @@ public class AutorService {
 
     public void delete(Integer id){
         Autor obj = findById(id);
-        if (obj.getLivros().isEmpty()){
+        if (!obj.getLivros().isEmpty()){
             throw new DataIntegrityViolationException("Autor possui livros");
         }
         repository.delete(obj);
