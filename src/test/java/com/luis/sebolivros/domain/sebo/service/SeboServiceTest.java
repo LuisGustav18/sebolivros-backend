@@ -3,7 +3,6 @@ package com.luis.sebolivros.domain.sebo.service;
 import com.luis.sebolivros.domain.sebo.dto.SeboDTO;
 import com.luis.sebolivros.domain.sebo.entity.Sebo;
 import com.luis.sebolivros.domain.sebo.repository.SeboRepository;
-import com.luis.sebolivros.domain.sebo.service.SeboService;
 import com.luis.sebolivros.domain.livro.entity.Livro;
 import com.luis.sebolivros.domain.usuario.repository.UsuarioRepository;
 import com.luis.sebolivros.exceptions.ObjectNotFoundException;
@@ -14,7 +13,6 @@ import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 import java.util.Collections;
@@ -49,16 +47,16 @@ class SeboServiceTest {
     void findByIdCase1(){
         int id = 1;
 
-        Sebo obj = new Sebo(1, "Maravilha", "maravilha@gmail.com", "123", "38204-054");
+        Sebo obj = new Sebo(1, "MaravilhaSebo", "maravilhaSebo@gmail.com", "123", "38204-054");
 
         when(repository.findById(id)).thenReturn(Optional.of(obj));
 
         Sebo result = SeboService.findById(id);
 
         assertNotNull(result);
-        assertEquals("Maravilha", result.getNome());
+        assertEquals("MaravilhaSebo", result.getNome());
         assertEquals(1, result.getId());
-        assertEquals("maravilha@gmail.com", result.getEmail());
+        assertEquals("maravilhaSebo@gmail.com", result.getEmail());
         assertEquals("123", result.getSenha());
         assertEquals("38204-054", result.getCep());
 
@@ -83,7 +81,7 @@ class SeboServiceTest {
     @DisplayName("Should find all Sebo successfully")
     void findAllCase1() {
 
-        Sebo obj01 = new Sebo(1, "Maravilha", "maravilha@gmail.com", "123", "38204-054");
+        Sebo obj01 = new Sebo(1, "MaravilhaSebo", "maravilhaSebo@gmail.com", "123", "38204-054");
         Sebo obj02 = new Sebo(2, "Maravilha1", "maravilha1@gmail.com", "1232", "38204-054");
         Sebo obj03 = new Sebo(3, "Maravilha2", "maravilha2@gmail.com", "1233", "38204-054");
 
@@ -94,9 +92,9 @@ class SeboServiceTest {
         assertNotNull(result);
         assertEquals(3, result.size());
 
-        assertEquals("Maravilha", result.get(0).getNome());
+        assertEquals("MaravilhaSebo", result.get(0).getNome());
         assertEquals(1, result.get(0).getId());
-        assertEquals("maravilha@gmail.com", result.get(0).getEmail());
+        assertEquals("maravilhaSebo@gmail.com", result.get(0).getEmail());
         assertEquals("123", result.get(0).getSenha());
         assertEquals("38204-054", result.get(0).getCep());
 
@@ -134,7 +132,7 @@ class SeboServiceTest {
     @Test
     @DisplayName("Should create Sebo successfully")
     void create() {
-        Sebo obj = new Sebo(1, "Maravilha", "maravilha@gmail.com", "123", "38204-054");
+        Sebo obj = new Sebo(1, "MaravilhaSebo", "maravilhaSebo@gmail.com", "123", "38204-054");
 
         when(usuarioRepository.findByEmail(anyString())).thenReturn(Optional.empty());
 
@@ -145,9 +143,9 @@ class SeboServiceTest {
         Sebo result = SeboService.create(new SeboDTO(obj));
 
         assertNotNull(result);
-        assertEquals("Maravilha", result.getNome());
+        assertEquals("MaravilhaSebo", result.getNome());
         assertEquals(1, result.getId());
-        assertEquals("maravilha@gmail.com", result.getEmail());
+        assertEquals("maravilhaSebo@gmail.com", result.getEmail());
         assertEquals("123", result.getSenha());
         assertEquals("38204-054", result.getCep());
 
@@ -165,7 +163,7 @@ class SeboServiceTest {
 
         when(encoder.encode(anyString())).thenAnswer(invocation -> invocation.getArgument(0));
 
-        Sebo obj = new Sebo(1, "Maravilha", "maravilha@gmail.com", "123", "38204-054");
+        Sebo obj = new Sebo(1, "MaravilhaSebo", "maravilhaSebo@gmail.com", "123", "38204-054");
 
         when(repository.findById(id)).thenReturn(Optional.of(obj));
 

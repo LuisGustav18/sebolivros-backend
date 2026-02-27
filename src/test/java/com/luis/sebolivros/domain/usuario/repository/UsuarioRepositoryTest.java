@@ -48,7 +48,7 @@ class UsuarioRepositoryTest {
     void findSeboByEmailSuccessfully() {
         String email = "Marcos@gmail.com";
         SeboDTO data = new SeboDTO(
-                1,
+                null,
                 "Marcos",
                 email,
                 "123",
