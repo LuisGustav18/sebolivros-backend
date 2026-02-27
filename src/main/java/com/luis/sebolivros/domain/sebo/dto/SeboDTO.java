@@ -22,6 +22,7 @@ public class SeboDTO implements Serializable {
     @NotNull(message = "O campo SENHA é requerido")
     private String senha;
 
+    @NotNull(message = "O campo CEP é requerido")
     private String cep;
 
     private Integer perfil;

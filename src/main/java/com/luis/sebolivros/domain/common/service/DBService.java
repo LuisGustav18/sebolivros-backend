@@ -58,11 +58,11 @@ public class DBService {
         Editora editora05 = new Editora("Rocco", null);
         Editora editora06 = new Editora("Martins Fontes", null);
 
-        Sebo sebo01 = new Sebo(null, "Maravilha", "maravilha@gmail.com", encoder.encode("123"), "38204-054");
-        Sebo sebo02 = new Sebo(null, "Sebo Central", "central@gmail.com", encoder.encode("123"), "38400-000");
-        Sebo sebo03 = new Sebo(null, "Sebo Antiguidades", "antigo@gmail.com", encoder.encode("123"), "38300-000");
-        Sebo sebo04 = new Sebo(null, "Sebo Universitário", "uni@gmail.com", encoder.encode("123"), "38500-000");
-        Sebo sebo05 = new Sebo(null, "Sebo Vintage", "vintage@gmail.com", encoder.encode("123"), "38600-000");
+        Sebo sebo01 = new Sebo(null, "Maravilha", "maravilha@gmail.com", encoder.encode("123"), "01001-000");
+        Sebo sebo02 = new Sebo(null, "Sebo Central", "central@gmail.com", encoder.encode("123"), "20040-020");
+        Sebo sebo03 = new Sebo(null, "Sebo Antiguidades", "antigo@gmail.com", encoder.encode("123"), "30140-110");
+        Sebo sebo04 = new Sebo(null, "Sebo Universitário", "uni@gmail.com", encoder.encode("123"), "70040-010");
+        Sebo sebo05 = new Sebo(null, "Sebo Vintage", "vintage@gmail.com", encoder.encode("123"), "80010-000");
 
 
         Livro livro01 = new Livro(null, "A Odisseia", 3, autor01, editora01, "9788563560271", Condicao.CONSERVADO, Estado.DISPONIVEL, sebo01);

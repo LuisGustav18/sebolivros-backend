@@ -6,10 +6,13 @@ import com.luis.sebolivros.exceptions.ObjectNotFoundException;
 import com.luis.sebolivros.domain.sebo.dto.SeboDTO;
 import com.luis.sebolivros.domain.sebo.entity.Sebo;
 import com.luis.sebolivros.domain.sebo.repository.SeboRepository;
+import com.luis.sebolivros.infra.cep.client.CepClient;
+import com.luis.sebolivros.infra.cep.dto.EnderecoDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import com.luis.sebolivros.exceptions.DataIntegrityViolationException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import reactor.core.publisher.Mono;
 
 import java.util.List;
 import java.util.Optional;
@@ -25,6 +28,9 @@ public class SeboService {
 
     @Autowired
     private PasswordEncoder encoder;
+
+    @Autowired
+    private CepClient cepClient;
 
     public Sebo findById(int id){
         Optional<Sebo> obj = repository.findById(id);
@@ -62,5 +68,10 @@ public class SeboService {
         if (obj.isPresent()){
             throw new DataIntegrityViolationException("Email já cadastrado");
         }
+    }
+
+    public EnderecoDTO findAddress(Integer id){
+        Sebo obj = findById(id);
+        return cepClient.viaCep(obj.getCep().replace("-", "")).block();
     }
 }

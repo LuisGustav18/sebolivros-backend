@@ -7,11 +7,13 @@ import com.luis.sebolivros.domain.sebo.dto.SeboDTO;
 import com.luis.sebolivros.domain.sebo.dto.SeboLivrosDTO;
 import com.luis.sebolivros.domain.sebo.entity.Sebo;
 import com.luis.sebolivros.domain.sebo.service.SeboService;
+import com.luis.sebolivros.infra.cep.dto.EnderecoDTO;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
+import reactor.core.publisher.Mono;
 
 import java.net.URI;
 import java.util.List;
@@ -61,5 +63,11 @@ public class SeboResource {
     public ResponseEntity<Void> delete(@PathVariable int id){
         service.delete(id);
         return ResponseEntity.noContent().build();
+    }
+
+    @GetMapping(value = "/{id}/endereço")
+    public ResponseEntity<EnderecoDTO> findAddress(@PathVariable Integer id){
+        EnderecoDTO objDto = service.findAddress(id);
+        return ResponseEntity.ok().body(objDto);
     }
 }
