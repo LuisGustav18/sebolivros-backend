@@ -48,8 +48,12 @@ public class ClienteService {
     public Cliente update(Integer id, ClienteDTO objDto){
         objDto.setId(id);
         validarEmail(objDto);
-        objDto.setSenha(encoder.encode(objDto.getSenha()));
         Cliente oldObj = findById(id);
+
+        if (!objDto.getSenha().equals(oldObj.getSenha())){
+            objDto.setSenha(encoder.encode(objDto.getSenha()));
+        }
+
         oldObj = new Cliente(objDto);
         return repository.save(oldObj);
     }

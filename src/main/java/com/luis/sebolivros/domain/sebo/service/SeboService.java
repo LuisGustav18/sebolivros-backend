@@ -51,8 +51,12 @@ public class SeboService {
     public Sebo update(Integer id, SeboDTO objDto){
         objDto.setId(id);
         validarEmail(objDto);
-        objDto.setSenha(encoder.encode(objDto.getSenha()));
         Sebo oldObj = findById(id);
+
+        if (!objDto.getSenha().equals(oldObj.getSenha())){
+            objDto.setSenha(encoder.encode(objDto.getSenha()));
+        }
+
         oldObj = new Sebo(objDto);
         return repository.save(oldObj);
     }
