@@ -50,6 +50,7 @@ public class SecurityConfigurations {
                 .csrf(csrf -> csrf.disable())
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS)) // Criamos uma configuração que não guardamos os dados sendo ela stateless usamos um token
                 .authorizeHttpRequests(authorize -> authorize
+                        .requestMatchers(HttpMethod.OPTIONS,  "/**").permitAll()
                         .requestMatchers(HttpMethod.POST,  "/auth/login", "/clientes", "/sebos").permitAll()
                         .requestMatchers(HttpMethod.POST, "/livros/**", "/autores/**", "/editora/**").hasRole("GESTOR")
                         .requestMatchers(HttpMethod.PUT, "/livros/**", "/autores/**", "/editora/**").hasRole("GESTOR")
@@ -65,7 +66,7 @@ public class SecurityConfigurations {
     public CorsConfigurationSource corsConfigurationSource(){
         CorsConfiguration configuration = new CorsConfiguration();
          configuration.setAllowedOrigins(List.of("http://localhost:4200"));
-         configuration.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE"));
+         configuration.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS"));
          configuration.setAllowedHeaders(List.of("*"));
          configuration.setExposedHeaders(List.of("Authorization"));
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
