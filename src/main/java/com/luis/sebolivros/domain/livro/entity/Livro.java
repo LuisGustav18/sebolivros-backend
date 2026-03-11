@@ -26,6 +26,8 @@ public class Livro implements Serializable {
     @JoinColumn(name = "autor_id")
     private Autor autor;
 
+    private int anoDeLancamento;
+
     @ManyToOne
     @JoinColumn(name = "editora_id")
     private Editora editora;
@@ -50,12 +52,13 @@ public class Livro implements Serializable {
     }
 
     public Livro(Integer id, String titulo, int quantidade,
-                 Autor autor, Editora editora, String isbn,
+                 Autor autor, int anoDeLancamento, Editora editora, String isbn,
                  Condicao condicao, Estado estado, Sebo sebo) {
         this.id = id;
         this.titulo = titulo;
         this.quantidade = quantidade;
         this.autor = autor;
+        this.anoDeLancamento = anoDeLancamento;
         this.editora = editora;
         this.isbn = isbn;
         this.condicao = condicao;
@@ -64,12 +67,13 @@ public class Livro implements Serializable {
     }
 
     public Livro(Integer id, String titulo, int quantidade,
-                 Autor autor, Editora editora, String isbn,
+                 Autor autor, int anoDeLancamento, Editora editora, String isbn,
                  Condicao condicao, Estado estado, String imageUrl, Sebo sebo) {
         this.id = id;
         this.titulo = titulo;
         this.quantidade = quantidade;
         this.autor = autor;
+        this.anoDeLancamento = anoDeLancamento;
         this.editora = editora;
         this.isbn = isbn;
         this.condicao = condicao;
@@ -160,6 +164,18 @@ public class Livro implements Serializable {
 
     public void setSebo(Sebo sebo) {
         this.sebo = sebo;
+    }
+
+    public int getAnoDeLancamento() {
+        return anoDeLancamento;
+    }
+
+    public void setAnoDeLancamento(int anoDeLancamento) {
+        this.anoDeLancamento = anoDeLancamento;
+    }
+
+    public void setDataCriacao(LocalDate dataCriacao) {
+        this.dataCriacao = dataCriacao;
     }
 
     @Override

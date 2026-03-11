@@ -21,6 +21,9 @@ public class LivroDTO implements Serializable {
     @NotNull(message = "O campo AUTOR é requerido")
     private Integer autor;
 
+    @NotNull(message = "O campo ANO DE LANÇAMENTO é requerido")
+    private int anoDeLancamento;
+
     @NotNull(message = "O campo EDITORA é requerido")
     private Integer editora;
 
@@ -56,6 +59,7 @@ public class LivroDTO implements Serializable {
         this.titulo = obj.getTitulo();
         this.quantidade = obj.getQuantidade();
         this.autor = obj.getAutor().getId();
+        this.anoDeLancamento = obj.getAnoDeLancamento();
         this.editora = obj.getEditora().getId();
         this.isbn = obj.getIsbn();
         this.condicao = obj.getCondicao().getCodigo();
@@ -148,5 +152,41 @@ public class LivroDTO implements Serializable {
 
     public void setSebo(Integer sebo) {
         this.sebo = sebo;
+    }
+
+    public String getNomeSebo() {
+        return nomeSebo;
+    }
+
+    public void setNomeSebo(String nomeSebo) {
+        this.nomeSebo = nomeSebo;
+    }
+
+    public String getNomeAutor() {
+        return nomeAutor;
+    }
+
+    public void setNomeAutor(String nomeAutor) {
+        this.nomeAutor = nomeAutor;
+    }
+
+    public String getNomeEditora() {
+        return nomeEditora;
+    }
+
+    public void setNomeEditora(String nomeEditora) {
+        this.nomeEditora = nomeEditora;
+    }
+
+    public void setDataCriacao(LocalDate dataCriacao) {
+        this.dataCriacao = dataCriacao;
+    }
+
+    public int getAnoDeLancamento() {
+        return anoDeLancamento;
+    }
+
+    public void setAnoDeLancamento(int anoDeLancamento) {
+        this.anoDeLancamento = anoDeLancamento;
     }
 }

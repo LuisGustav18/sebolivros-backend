@@ -85,6 +85,7 @@ public class LivroService {
         obj.setEditora(editora);
         obj.setIsbn(objDto.getIsbn());
         obj.setCondicao(Condicao.toEnum(objDto.getCondicao()));
+        obj.setAnoDeLancamento(objDto.getAnoDeLancamento());
         obj.setEstado(Estado.toEnum(objDto.getEstado()));
         obj.setImageUrl(objDto.getImageUrl());
         obj.setSebo(sebo);
