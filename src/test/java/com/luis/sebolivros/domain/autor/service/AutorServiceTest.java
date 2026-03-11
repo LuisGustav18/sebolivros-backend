@@ -201,7 +201,7 @@ class AutorServiceTest {
 
         Autor obj = new Autor("Marcos", id);
 
-        Livro livro01 = new Livro(null, "A Odisseia", 3, obj, null, "9788563560271", Condicao.CONSERVADO, Estado.DISPONIVEL, null);
+        Livro livro01 = new Livro(null, "A Odisseia", 3, obj, 1933,null, "9788563560271", Condicao.CONSERVADO, Estado.DISPONIVEL, null);
 
         obj.getLivros().add(livro01);
 
