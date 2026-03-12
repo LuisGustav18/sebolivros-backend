@@ -23,9 +23,6 @@ public class Sebo extends Usuario {
     @OneToMany(mappedBy = "sebo")
     private List<Livro> livros = new ArrayList<>();
 
-    @JsonFormat(pattern = "dd/MM/yyyy")
-    private LocalDate dataCriacao = LocalDate.now();
-
     public Sebo(){
         super();
         setPerfil(Perfil.GESTOR);
