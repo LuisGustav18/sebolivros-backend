@@ -1,13 +1,11 @@
 package com.luis.sebolivros.domain.sebo.entity;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
 import com.luis.sebolivros.domain.common.enums.Perfil;
 import com.luis.sebolivros.domain.livro.entity.Livro;
 import com.luis.sebolivros.domain.sebo.dto.SeboDTO;
 import com.luis.sebolivros.domain.usuario.entity.Usuario;
 import jakarta.persistence.*;
 
-import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -17,8 +15,6 @@ import java.util.Objects;
 public class Sebo extends Usuario {
 
     private String cep;
-
-    private Integer perfil;
 
     @OneToMany(mappedBy = "sebo")
     private List<Livro> livros = new ArrayList<>();
