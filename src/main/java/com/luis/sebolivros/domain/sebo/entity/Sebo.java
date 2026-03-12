@@ -1,5 +1,6 @@
 package com.luis.sebolivros.domain.sebo.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.luis.sebolivros.domain.common.enums.Perfil;
 import com.luis.sebolivros.domain.livro.entity.Livro;
 import com.luis.sebolivros.domain.sebo.dto.SeboDTO;
@@ -17,6 +18,7 @@ public class Sebo extends Usuario {
     private String cep;
 
     @OneToMany(mappedBy = "sebo")
+    @JsonIgnore
     private List<Livro> livros = new ArrayList<>();
 
     public Sebo(){

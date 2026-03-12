@@ -24,7 +24,7 @@ public class TokenService {
             Algorithm algorithm = Algorithm.HMAC256(secret);
             String token = JWT.create()
                     .withIssuer("sebolivros")
-                    .withSubject(user.getUsername())
+                    .withSubject(user.getUsername()) // Vai ser passador pro front end coloque id tbm e perfil
                     .withExpiresAt(genExpirationDate())
                     .sign(algorithm);
             return token;
