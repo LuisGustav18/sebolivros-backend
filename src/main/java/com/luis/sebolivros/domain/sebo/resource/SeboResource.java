@@ -65,7 +65,7 @@ public class SeboResource {
         return ResponseEntity.noContent().build();
     }
 
-    @GetMapping(value = "/{id}/endereço")
+    @GetMapping(value = "/{id}/endereco")
     public ResponseEntity<EnderecoDTO> findAddress(@PathVariable Integer id){
         EnderecoDTO objDto = service.findAddress(id);
         return ResponseEntity.ok().body(objDto);
