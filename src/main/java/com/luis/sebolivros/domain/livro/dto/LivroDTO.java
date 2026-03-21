@@ -33,7 +33,6 @@ public class LivroDTO implements Serializable {
     @NotNull(message = "O campo CONDIÇÃO é requerido")
     private Integer condicao;
 
-    @NotNull(message = "O campo ESTADO é requerido")
     private Integer estado;
 
     @NotNull(message = "O campo ESTADO é requerido")

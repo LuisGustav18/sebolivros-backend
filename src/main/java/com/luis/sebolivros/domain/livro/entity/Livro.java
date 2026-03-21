@@ -53,7 +53,7 @@ public class Livro implements Serializable {
 
     public Livro(Integer id, String titulo, int quantidade,
                  Autor autor, int anoDeLancamento, Editora editora, String isbn,
-                 Condicao condicao, Estado estado, Sebo sebo) {
+                 Condicao condicao, Sebo sebo) {
         this.id = id;
         this.titulo = titulo;
         this.quantidade = quantidade;
@@ -62,13 +62,12 @@ public class Livro implements Serializable {
         this.editora = editora;
         this.isbn = isbn;
         this.condicao = condicao;
-        this.estado = estado;
         this.sebo = sebo;
     }
 
     public Livro(Integer id, String titulo, int quantidade,
                  Autor autor, int anoDeLancamento, Editora editora, String isbn,
-                 Condicao condicao, Estado estado, String imageUrl, Sebo sebo) {
+                 Condicao condicao, String imageUrl, Sebo sebo) {
         this.id = id;
         this.titulo = titulo;
         this.quantidade = quantidade;
@@ -77,9 +76,16 @@ public class Livro implements Serializable {
         this.editora = editora;
         this.isbn = isbn;
         this.condicao = condicao;
-        this.estado = estado;
         this.imageUrl = imageUrl;
         this.sebo = sebo;
+    }
+
+    @PrePersist
+    @PreUpdate
+    public void atualizarEstado(){
+        this.estado = this.quantidade > 0 ?
+                Estado.DISPONIVEL :
+                Estado.INDISPONIVEL;
     }
 
     public Integer getId() {

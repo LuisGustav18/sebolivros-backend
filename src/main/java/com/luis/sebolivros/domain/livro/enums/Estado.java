@@ -3,7 +3,7 @@ package com.luis.sebolivros.domain.livro.enums;
 public enum Estado {
 
     DISPONIVEL(0, "DISPONIVEL"),
-    VENDIDO(1, "VENDIDO");
+    INDISPONIVEL(1, "INDISPONIVEL");
 
     private Integer codigo;
     private String descricao;

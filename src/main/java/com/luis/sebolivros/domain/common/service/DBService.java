@@ -64,19 +64,19 @@ public class DBService {
         Sebo sebo04 = new Sebo(null, "Sebo Universitário", "uni@gmail.com", encoder.encode("123"), "70040-010");
         Sebo sebo05 = new Sebo(null, "Sebo Vintage", "vintage@gmail.com", encoder.encode("123"), "80010-000");
 
-        Livro livro01 = new Livro(null, "A Odisseia", 3, autor01, 2014, editora01, "9788563560271", Condicao.CONSERVADO, Estado.DISPONIVEL, sebo01);
-        Livro livro02 = new Livro(null, "Hamlet", 2, autor02, 2012, editora02, "9788503012304", Condicao.CONSERVADO, Estado.DISPONIVEL, sebo01);
-        Livro livro03 = new Livro(null, "Dom Casmurro", 4, autor03, 2019, editora04, "9788535925697", Condicao.CONSERVADO, Estado.DISPONIVEL, sebo01);
-        Livro livro04 = new Livro(null, "1984", 5, autor04, 2009, editora03, "9788535914844", Condicao.CONSERVADO, Estado.DISPONIVEL, sebo01);
-        Livro livro05 = new Livro(null, "O Senhor dos Anéis: A Sociedade do Anel", 2, autor05, 2019, editora05, "9788533613374", Condicao.CONSERVADO, Estado.DISPONIVEL, sebo01);
-        Livro livro06 = new Livro(null, "A Hora da Estrela", 3, autor06, 2020, editora04, "9788535929770", Condicao.CONSERVADO, Estado.DISPONIVEL, sebo03);
-        Livro livro07 = new Livro(null, "A Metamorfose", 4, autor07, 2017, editora06, "9788571648496", Condicao.CONSERVADO, Estado.DISPONIVEL, sebo04);
-        Livro livro08 = new Livro(null, "Assassinato no Expresso do Oriente", 2, autor06, 2011, editora02, "9788503011345", Condicao.CONSERVADO, Estado.DISPONIVEL, sebo05);
-        Livro livro09 = new Livro(null, "Ilíada", 2, autor01, 2015, editora01, "9788563560288", Condicao.CONSERVADO, Estado.DISPONIVEL, sebo05);
-        Livro livro10 = new Livro(null, "O Hobbit", 3, autor05, 2019, editora05, "9788533613381", Condicao.CONSERVADO, Estado.DISPONIVEL, sebo02);
-        Livro livro11 = new Livro(null, "Capitães da Areia", 2, autor03, 2018, editora04, "9788535921118", Condicao.CONSERVADO, Estado.DISPONIVEL, sebo02);
-        Livro livro12 = new Livro(null, "Memórias Póstumas de Brás Cubas", 4, autor03, 2019, editora04, "9788535922222", Condicao.CONSERVADO, Estado.DISPONIVEL, sebo02);
-        Livro livro13 = new Livro(null, "Crime e Castigo", 2, autor07, 2017, editora06, "9788571648502", Condicao.CONSERVADO, Estado.DISPONIVEL, sebo02);
+        Livro livro01 = new Livro(null, "A Odisseia", 2, autor01, 2014, editora01, "9788563560271", Condicao.CONSERVADO, sebo01);
+        Livro livro02 = new Livro(null, "Hamlet", 2, autor02, 2012, editora02, "9788503012304", Condicao.CONSERVADO, sebo01);
+        Livro livro03 = new Livro(null, "Dom Casmurro", 4, autor03, 2019, editora04, "9788535925697", Condicao.CONSERVADO, sebo01);
+        Livro livro04 = new Livro(null, "1984", 5, autor04, 2009, editora03, "9788535914844", Condicao.CONSERVADO, sebo01);
+        Livro livro05 = new Livro(null, "O Senhor dos Anéis: A Sociedade do Anel", 2, autor05, 2019, editora05, "9788533613374", Condicao.CONSERVADO, sebo01);
+        Livro livro06 = new Livro(null, "A Hora da Estrela", 3, autor06, 2020, editora04, "9788535929770", Condicao.CONSERVADO, sebo03);
+        Livro livro07 = new Livro(null, "A Metamorfose", 4, autor07, 2017, editora06, "9788571648496", Condicao.CONSERVADO, sebo04);
+        Livro livro08 = new Livro(null, "Assassinato no Expresso do Oriente", 2, autor06, 2011, editora02, "9788503011345", Condicao.CONSERVADO, sebo05);
+        Livro livro09 = new Livro(null, "Ilíada", 2, autor01, 2015, editora01, "9788563560288", Condicao.CONSERVADO, sebo05);
+        Livro livro10 = new Livro(null, "O Hobbit", 3, autor05, 2019, editora05, "9788533613381", Condicao.CONSERVADO, sebo02);
+        Livro livro11 = new Livro(null, "Capitães da Areia", 2, autor03, 2018, editora04, "9788535921118", Condicao.CONSERVADO, sebo02);
+        Livro livro12 = new Livro(null, "Memórias Póstumas de Brás Cubas", 4, autor03, 2019, editora04, "9788535922222", Condicao.CONSERVADO, sebo02);
+        Livro livro13 = new Livro(null, "Crime e Castigo", 2, autor07, 2017, editora06, "9788571648502", Condicao.CONSERVADO, sebo02);
 
         Cliente cliente01 = new Cliente(null, "Marcos", "marcos@gmail.com", encoder.encode("123"));
         Cliente cliente02 = new Cliente(null, "Ana Paula", "ana.paula@gmail.com", encoder.encode("123"));
