@@ -12,9 +12,11 @@ import com.luis.sebolivros.domain.livro.entity.Livro;
 import com.luis.sebolivros.domain.livro.enums.Condicao;
 import com.luis.sebolivros.domain.livro.enums.Estado;
 import com.luis.sebolivros.domain.livro.repository.LivroRepository;
+import com.luis.sebolivros.infra.storage.SupaBaseStorageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import com.luis.sebolivros.exceptions.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 import java.util.Optional;
@@ -34,6 +36,9 @@ public class LivroService {
     @Autowired
     private EditoraService editoraService;
 
+    @Autowired
+    private SupaBaseStorageService storageService;
+
     public Livro findById(int id){
         Optional<Livro> obj = repository.findById(id);
         return obj.orElseThrow(() -> new ObjectNotFoundException("Livro não encontrado"));
@@ -48,18 +53,32 @@ public class LivroService {
         return repository.findAll();
     }
 
-    public Livro create(LivroDTO objDto){
+    public Livro create(LivroDTO objDto, MultipartFile file){
         objDto.setId(null);
+
+        if (file != null && !file.isEmpty()) {
+            String imageUrl = storageService.uploadImagem(file);
+            objDto.setImageUrl(imageUrl);
+        }
+
+
         Livro obj = newLivro(objDto);
         return repository.save(obj);
     }
 
-    public Livro update(Integer id, LivroDTO objDto){
+    public Livro update(Integer id, LivroDTO objDto, MultipartFile file){
         objDto.setId(id);
         Livro oldObj = findById(id);
 
         if (oldObj.getSebo().getId() != objDto.getSebo()){
             throw new DataIntegrityViolationException("Não e possível mudar local de cadastro");
+        }
+
+        if (file != null && !file.isEmpty()){
+            String imageUrl = storageService.uploadImagem(file);
+            objDto.setImageUrl(imageUrl);
+        } else {
+            objDto.setImageUrl(oldObj.getImageUrl());
         }
 
         oldObj = newLivro(objDto);

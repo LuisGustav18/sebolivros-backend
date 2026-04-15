@@ -3,7 +3,6 @@ package com.luis.sebolivros.domain.livro.entity;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.luis.sebolivros.domain.editora.entity.Editora;
 import com.luis.sebolivros.domain.autor.entity.Autor;
-import com.luis.sebolivros.domain.livro.dto.LivroDTO;
 import com.luis.sebolivros.domain.livro.enums.Condicao;
 import com.luis.sebolivros.domain.livro.enums.Estado;
 import com.luis.sebolivros.domain.sebo.entity.Sebo;
