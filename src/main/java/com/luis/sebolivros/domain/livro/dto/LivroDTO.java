@@ -63,6 +63,7 @@ public class LivroDTO implements Serializable {
         this.isbn = obj.getIsbn();
         this.condicao = obj.getCondicao().getCodigo();
         this.estado = obj.getEstado().getCodigo();
+        this.imageUrl = obj.getImageUrl();
         this.sebo = obj.getSebo().getId();
         this.nomeSebo = obj.getSebo().getNome();
         this.nomeAutor = obj.getAutor().getNome();
