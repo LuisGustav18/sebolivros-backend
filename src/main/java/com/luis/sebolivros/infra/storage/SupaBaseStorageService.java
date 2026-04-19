@@ -37,7 +37,7 @@ public class SupaBaseStorageService {
             RestTemplate restTemplate = new RestTemplate();
             restTemplate.exchange(url, HttpMethod.POST, entity, String.class);
 
-            return SUPABASE_URL + "/storage/v1/public/" + BUCKET + "/" + fileName;
+            return SUPABASE_URL + "/storage/v1/object/public/" + BUCKET + "/" + fileName;
         } catch (IOException e) {
             throw new RuntimeException("Erro ao enviar imagem", e);
         }
