@@ -78,6 +78,20 @@ public class DBService {
         Livro livro12 = new Livro(null, "Memórias Póstumas de Brás Cubas", 4, autor03, 2019, editora04, "9788535922222", Condicao.CONSERVADO, sebo02);
         Livro livro13 = new Livro(null, "Crime e Castigo", 2, autor07, 2017, editora06, "9788571648502", Condicao.CONSERVADO, sebo02);
 
+        livro01.setImageUrl("https://utskkhxqkzwawkhnoxmq.supabase.co/storage/v1/object/public/livros/AOdisseia.jpg");
+        livro02.setImageUrl("https://utskkhxqkzwawkhnoxmq.supabase.co/storage/v1/object/public/livros/hamlet.jpg");
+        livro03.setImageUrl("https://utskkhxqkzwawkhnoxmq.supabase.co/storage/v1/object/public/livros/dom-casmurro.jpg");
+        livro04.setImageUrl("https://utskkhxqkzwawkhnoxmq.supabase.co/storage/v1/object/public/livros/1984.jpg");
+        livro05.setImageUrl("https://utskkhxqkzwawkhnoxmq.supabase.co/storage/v1/object/public/livros/senhor-dos-aneis.jpg"); // confere o nome
+        livro06.setImageUrl("https://utskkhxqkzwawkhnoxmq.supabase.co/storage/v1/object/public/livros/AHoradaEstrela.jpg");
+        livro07.setImageUrl("https://utskkhxqkzwawkhnoxmq.supabase.co/storage/v1/object/public/livros/metamorfose.jpg");
+        livro08.setImageUrl("https://utskkhxqkzwawkhnoxmq.supabase.co/storage/v1/object/public/livros/AssassinatonoExpresso.jpg");
+        livro09.setImageUrl("https://utskkhxqkzwawkhnoxmq.supabase.co/storage/v1/object/public/livros/iliada.jpg"); // corrige se necessário
+        livro10.setImageUrl("https://utskkhxqkzwawkhnoxmq.supabase.co/storage/v1/object/public/livros/OHobbit.jpg");
+        livro11.setImageUrl("https://utskkhxqkzwawkhnoxmq.supabase.co/storage/v1/object/public/livros/capitaes-da-areia.jpg"); // precisa existir
+        livro12.setImageUrl("https://utskkhxqkzwawkhnoxmq.supabase.co/storage/v1/object/public/livros/MemoriasPostumas.jpg");
+        livro13.setImageUrl("https://utskkhxqkzwawkhnoxmq.supabase.co/storage/v1/object/public/livros/CrimeeCastigo.jpg");
+
         Cliente cliente01 = new Cliente(null, "Marcos", "marcos@gmail.com", encoder.encode("123"));
         Cliente cliente02 = new Cliente(null, "Ana Paula", "ana.paula@gmail.com", encoder.encode("123"));
         Cliente cliente03 = new Cliente(null, "João Pedro", "joao.pedro@gmail.com", encoder.encode("123"));
