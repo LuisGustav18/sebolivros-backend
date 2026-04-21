@@ -92,11 +92,11 @@ public class DBService {
         livro12.setImageUrl("https://utskkhxqkzwawkhnoxmq.supabase.co/storage/v1/object/public/livros/MemoriasPostumas.jpg");
         livro13.setImageUrl("https://utskkhxqkzwawkhnoxmq.supabase.co/storage/v1/object/public/livros/CrimeeCastigo.jpg");
 
-        Cliente cliente01 = new Cliente(null, "Marcos", "marcos@gmail.com", encoder.encode("123"));
-        Cliente cliente02 = new Cliente(null, "Ana Paula", "ana.paula@gmail.com", encoder.encode("123"));
-        Cliente cliente03 = new Cliente(null, "João Pedro", "joao.pedro@gmail.com", encoder.encode("123"));
-        Cliente cliente04 = new Cliente(null, "Lucas Silva", "lucas.silva@gmail.com", encoder.encode("123"));
-        Cliente cliente05 = new Cliente(null, "Beatriz Santos", "beatriz.santos@gmail.com", encoder.encode("123"));
+        Cliente cliente01 = new Cliente(null, "Marcos", "marcos@gmail.com", encoder.encode("123"), "11144477735");
+        Cliente cliente02 = new Cliente(null, "Ana Paula", "ana.paula@gmail.com", encoder.encode("123"), "12345678909");
+        Cliente cliente03 = new Cliente(null, "João Pedro", "joao.pedro@gmail.com", encoder.encode("123"), "98765432100");
+        Cliente cliente04 = new Cliente(null, "Lucas Silva", "lucas.silva@gmail.com", encoder.encode("123"), "52998224725");
+        Cliente cliente05 = new Cliente(null, "Beatriz Santos", "beatriz.santos@gmail.com", encoder.encode("123"), "32165498708");
 
         seboRepository.saveAll(Arrays.asList(
                 sebo01, sebo02, sebo03,

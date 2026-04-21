@@ -8,13 +8,17 @@ import jakarta.persistence.*;
 @Entity
 public class Cliente extends Usuario {
 
+    @Column(unique = true)
+    private String cpf;
+
     public Cliente(){
         super();
         setPerfil(Perfil.CLIENTE);
     }
 
-    public Cliente(Integer id, String nome, String email, String senha) {
+    public Cliente(Integer id, String nome, String email, String senha, String cpf) {
         super(senha, email, nome, id);
+        this.cpf = cpf;
         setPerfil(Perfil.CLIENTE);
     }
 
@@ -24,7 +28,14 @@ public class Cliente extends Usuario {
         this.nome = objDto.getNome();
         this.email = objDto.getEmail();
         this.senha = objDto.getSenha();
+        this.cpf = objDto.getCpf();
     }
 
+    public String getCpf() {
+        return cpf;
+    }
 
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
+    }
 }

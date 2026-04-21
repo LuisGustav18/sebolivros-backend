@@ -21,6 +21,9 @@ public class ClienteDTO implements Serializable {
     @NotNull(message = "O campo SENHA é requerido")
     private String senha;
 
+    @NotNull(message = "O campo CPF é requerido")
+    private String cpf;
+
     private Integer perfil;
 
     @JsonFormat(pattern = "dd/MM/yyyy")
@@ -30,10 +33,11 @@ public class ClienteDTO implements Serializable {
         setPerfil(Perfil.CLIENTE);
     }
 
-    public ClienteDTO(String nome, String email, String senha) {
+    public ClienteDTO(String nome, String email, String senha, String cpf) {
         this.nome = nome;
         this.email = email;
         this.senha = senha;
+        this.cpf = cpf;
         setPerfil(Perfil.CLIENTE);
     }
 
@@ -42,6 +46,7 @@ public class ClienteDTO implements Serializable {
         this.nome = obj.getNome();
         this.email = obj.getEmail();
         this.senha = obj.getSenha();
+        this.cpf = obj.getCpf();
         setPerfil(Perfil.CLIENTE);
     }
 
@@ -75,6 +80,14 @@ public class ClienteDTO implements Serializable {
 
     public void setSenha(String senha) {
         this.senha = senha;
+    }
+
+    public String getCpf() {
+        return cpf;
+    }
+
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
     }
 
     public Perfil getPerfil() {
