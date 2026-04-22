@@ -10,4 +10,6 @@ import java.util.Optional;
 public interface SeboRepository extends JpaRepository<Sebo, Integer> {
 
     Optional<Sebo> findByEmail(String email);
+
+    Optional<Sebo> findByCnpj(String cnpj);
 }

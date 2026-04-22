@@ -17,6 +17,9 @@ public class Sebo extends Usuario {
 
     private String cep;
 
+    @Column(unique = true)
+    private String cnpj;
+
     @OneToMany(mappedBy = "sebo")
     @JsonIgnore
     private List<Livro> livros = new ArrayList<>();
@@ -26,9 +29,10 @@ public class Sebo extends Usuario {
         setPerfil(Perfil.GESTOR);
     }
 
-    public Sebo(Integer id, String nome, String email, String senha, String cep) {
+    public Sebo(Integer id, String nome, String email, String senha, String cep, String cnpj) {
         super(senha, email, nome, id);
         this.cep = cep;
+        this.cnpj = cnpj;
         setPerfil(Perfil.GESTOR);
     }
 
@@ -39,6 +43,7 @@ public class Sebo extends Usuario {
         this.email = objDto.getEmail();
         this.senha = objDto.getSenha();
         this.cep = objDto.getCep();
+        this.cnpj = objDto.getCnpj();
     }
 
     public String getCep() {
@@ -59,6 +64,14 @@ public class Sebo extends Usuario {
 
     public LocalDate getDataCriacao() {
         return dataCriacao;
+    }
+
+    public String getCnpj() {
+        return cnpj;
+    }
+
+    public void setCnpj(String cnpj) {
+        this.cnpj = cnpj;
     }
 
     public List<Livro> getLivros() {

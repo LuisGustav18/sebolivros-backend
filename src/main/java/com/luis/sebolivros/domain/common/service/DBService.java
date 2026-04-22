@@ -58,11 +58,11 @@ public class DBService {
         Editora editora05 = new Editora("Rocco", null);
         Editora editora06 = new Editora("Martins Fontes", null);
 
-        Sebo sebo01 = new Sebo(null, "Maravilha", "maravilha@gmail.com", encoder.encode("123"), "01001-000");
-        Sebo sebo02 = new Sebo(null, "Sebo Central", "central@gmail.com", encoder.encode("123"), "20040-020");
-        Sebo sebo03 = new Sebo(null, "Sebo Antiguidades", "antigo@gmail.com", encoder.encode("123"), "30140-110");
-        Sebo sebo04 = new Sebo(null, "Sebo Universitário", "uni@gmail.com", encoder.encode("123"), "70040-010");
-        Sebo sebo05 = new Sebo(null, "Sebo Vintage", "vintage@gmail.com", encoder.encode("123"), "80010-000");
+        Sebo sebo01 = new Sebo(null, "Maravilha", "maravilha@gmail.com", encoder.encode("123"), "01001-000", "12345678000195");
+        Sebo sebo02 = new Sebo(null, "Sebo Central", "central@gmail.com", encoder.encode("123"), "20040-020", "98765432000110");
+        Sebo sebo03 = new Sebo(null, "Sebo Antiguidades", "antigo@gmail.com", encoder.encode("123"), "30140-110", "11222333000181");
+        Sebo sebo04 = new Sebo(null, "Sebo Universitário", "uni@gmail.com", encoder.encode("123"), "70040-010", "55666777000102");
+        Sebo sebo05 = new Sebo(null, "Sebo Vintage", "vintage@gmail.com", encoder.encode("123"), "80010-000", "44555666000177");
 
         Livro livro01 = new Livro(null, "A Odisseia", 2, autor01, 2014, editora01, "9788563560271", Condicao.CONSERVADO, sebo01);
         Livro livro02 = new Livro(null, "Hamlet", 2, autor02, 2012, editora02, "9788503012304", Condicao.CONSERVADO, sebo01);

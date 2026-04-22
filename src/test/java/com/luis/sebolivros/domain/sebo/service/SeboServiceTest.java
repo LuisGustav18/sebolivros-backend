@@ -47,7 +47,7 @@ class SeboServiceTest {
     void findByIdCase1(){
         int id = 1;
 
-        Sebo obj = new Sebo(1, "MaravilhaSebo", "maravilhaSebo@gmail.com", "123", "38204-054");
+        Sebo obj = new Sebo(1, "MaravilhaSebo", "maravilhaSebo@gmail.com", "123", "38204-054", "12345678000144");
 
         when(repository.findById(id)).thenReturn(Optional.of(obj));
 
@@ -81,9 +81,9 @@ class SeboServiceTest {
     @DisplayName("Should find all Sebo successfully")
     void findAllCase1() {
 
-        Sebo obj01 = new Sebo(1, "MaravilhaSebo", "maravilhaSebo@gmail.com", "123", "38204-054");
-        Sebo obj02 = new Sebo(2, "Maravilha1", "maravilha1@gmail.com", "1232", "38204-054");
-        Sebo obj03 = new Sebo(3, "Maravilha2", "maravilha2@gmail.com", "1233", "38204-054");
+        Sebo obj01 = new Sebo(1, "MaravilhaSebo", "maravilhaSebo@gmail.com", "123", "38204-054", "12345678000197");
+        Sebo obj02 = new Sebo(2, "Maravilha1", "maravilha1@gmail.com", "1232", "38204-054", "12345678000144");
+        Sebo obj03 = new Sebo(3, "Maravilha2", "maravilha2@gmail.com", "1233", "38204-054", "12345678000133");
 
         when(repository.findAll()).thenReturn(List.of(obj01, obj02, obj03));
 
@@ -132,7 +132,7 @@ class SeboServiceTest {
     @Test
     @DisplayName("Should create Sebo successfully")
     void create() {
-        Sebo obj = new Sebo(1, "MaravilhaSebo", "maravilhaSebo@gmail.com", "123", "38204-054");
+        Sebo obj = new Sebo(1, "MaravilhaSebo", "maravilhaSebo@gmail.com", "123", "38204-054", "12345678000333");
 
         when(usuarioRepository.findByEmail(anyString())).thenReturn(Optional.empty());
 
@@ -163,13 +163,13 @@ class SeboServiceTest {
 
         when(encoder.encode(anyString())).thenAnswer(invocation -> invocation.getArgument(0));
 
-        Sebo obj = new Sebo(1, "MaravilhaSebo", "maravilhaSebo@gmail.com", "123", "38204-054");
+        Sebo obj = new Sebo(1, "MaravilhaSebo", "maravilhaSebo@gmail.com", "123", "38204-054", "12345678000324");
 
         when(repository.findById(id)).thenReturn(Optional.of(obj));
 
         when(repository.save(any(Sebo.class))).thenAnswer(invocation -> invocation.getArgument(0));
 
-        Sebo result = SeboService.update(id, new SeboDTO(1, "Maravilha1", "maravilha1@gmail.com", "1231", "38204-054"));
+        Sebo result = SeboService.update(id, new SeboDTO(1, "Maravilha1", "maravilha1@gmail.com", "1231", "38204-054", "12345678000195"));
 
         assertNotNull(result);
         assertEquals("Maravilha1", result.getNome());
@@ -190,7 +190,7 @@ class SeboServiceTest {
         when(repository.findById(id)).thenReturn(Optional.empty());
 
         Exception thrown = Assertions.assertThrows(ObjectNotFoundException.class, () -> {
-            SeboService.update(id, new SeboDTO(1, "Maravilha1", "maravilha1@gmail.com", "1231", "38204-054")); });
+            SeboService.update(id, new SeboDTO(1, "Maravilha1", "maravilha1@gmail.com", "1231", "38204-054", "12345678000193")); });
 
         verify(repository, times(1)).findById(id);
         verify(repository, never()).save(any());
@@ -203,7 +203,7 @@ class SeboServiceTest {
 
         Livro livro = new Livro();
 
-        Sebo obj = new Sebo(1, "Maravilha1", "maravilha1@gmail.com", "1231", "38204-054");
+        Sebo obj = new Sebo(1, "Maravilha1", "maravilha1@gmail.com", "1231", "38204-054", "12345678000198");
 
         when(repository.findById(id)).thenReturn(Optional.of(obj));
 

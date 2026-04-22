@@ -12,9 +12,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import com.luis.sebolivros.exceptions.DataIntegrityViolationException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-import reactor.core.publisher.Mono;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 
 @Service
@@ -44,14 +44,22 @@ public class SeboService {
     public Sebo create(SeboDTO objDto){
         objDto.setId(null);
         validarEmail(objDto);
+        validarCnpj(objDto.getCnpj());
         objDto.setSenha(encoder.encode(objDto.getSenha()));
         return repository.save(new Sebo(objDto));
     }
 
     public Sebo update(Integer id, SeboDTO objDto){
         objDto.setId(id);
-        validarEmail(objDto);
         Sebo oldObj = findById(id);
+
+        if (!Objects.equals(oldObj.getEmail(), objDto.getEmail())){
+            validarEmail(objDto);
+        }
+
+        if (!Objects.equals(oldObj.getCnpj(), objDto.getCnpj())){
+            validarCnpj(objDto.getCnpj());
+        }
 
         if (!objDto.getSenha().equals(oldObj.getSenha())){
             objDto.setSenha(encoder.encode(objDto.getSenha()));
@@ -64,6 +72,14 @@ public class SeboService {
     public void delete(Integer id){
         Sebo obj = findById(id);
         repository.delete(obj);
+    }
+
+    private void validarCnpj(String cnpj){
+        Optional<Sebo> obj = repository.findByCnpj(cnpj);
+
+        if (obj.isPresent()){
+            throw new DataIntegrityViolationException("CNPJ já cadastrado");
+        }
     }
 
     private void validarEmail(SeboDTO objDto){

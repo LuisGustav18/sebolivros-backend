@@ -2,10 +2,8 @@ package com.luis.sebolivros.domain.usuario.repository;
 
 import com.luis.sebolivros.domain.cliente.dto.ClienteDTO;
 import com.luis.sebolivros.domain.cliente.entity.Cliente;
-import com.luis.sebolivros.domain.cliente.repository.ClienteRepository;
 import com.luis.sebolivros.domain.sebo.dto.SeboDTO;
 import com.luis.sebolivros.domain.sebo.entity.Sebo;
-import com.luis.sebolivros.domain.sebo.repository.SeboRepository;
 import com.luis.sebolivros.domain.usuario.entity.Usuario;
 import jakarta.persistence.EntityManager;
 import org.junit.jupiter.api.DisplayName;
@@ -34,7 +32,8 @@ class UsuarioRepositoryTest {
         ClienteDTO data = new ClienteDTO(
                 "Marcos",
                 email,
-                "123"
+                "123",
+                "12312312311"
         );
         this.createUsuario(data);
 
@@ -52,7 +51,8 @@ class UsuarioRepositoryTest {
                 "Marcos",
                 email,
                 "123",
-                "1234-1234"
+                "1234-1234",
+                "12345678000642"
         );
         this.createUsuario(data);
 

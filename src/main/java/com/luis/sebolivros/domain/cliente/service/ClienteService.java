@@ -41,14 +41,22 @@ public class ClienteService {
     public Cliente create(ClienteDTO objDto){
         objDto.setId(null);
         validarEmail(objDto);
+        validarCpf(objDto.getCpf());
         objDto.setSenha(encoder.encode(objDto.getSenha()));
         return repository.save(new Cliente(objDto));
     }
 
     public Cliente update(Integer id, ClienteDTO objDto){
         objDto.setId(id);
-        validarEmail(objDto);
         Cliente oldObj = findById(id);
+
+        if (!oldObj.getEmail().equals(objDto.getEmail())){
+            validarEmail(objDto);
+        }
+
+        if (!oldObj.getCpf().equals(objDto.getCpf())){
+            validarCpf(objDto.getCpf());
+        }
 
         if (!objDto.getSenha().equals(oldObj.getSenha())){
             objDto.setSenha(encoder.encode(objDto.getSenha()));
@@ -61,6 +69,14 @@ public class ClienteService {
     public void delete(Integer id){
         Cliente obj = findById(id);
         repository.delete(obj);
+    }
+
+    private void validarCpf(String cpf){
+        Optional<Cliente> obj = repository.findByCpf(cpf);
+
+        if (obj.isPresent()){
+            throw new DataIntegrityViolationException("CPF já cadastrado");
+        }
     }
 
     private void validarEmail(ClienteDTO objDto){

@@ -25,6 +25,9 @@ public class SeboDTO implements Serializable {
     @NotNull(message = "O campo CEP é requerido")
     private String cep;
 
+    @NotNull(message = "O campo CNPJ é requerido")
+    private String cnpj;
+
     private Integer perfil;
 
     @JsonFormat(pattern = "dd/MM/yyyy")
@@ -34,12 +37,13 @@ public class SeboDTO implements Serializable {
         setPerfil(Perfil.GESTOR);
     }
 
-    public SeboDTO(Integer id, String nome, String email, String senha, String cep) {
+    public SeboDTO(Integer id, String nome, String email, String senha, String cep, String cnpj) {
         this.id = id;
         this.nome = nome;
         this.email = email;
         this.senha = senha;
         this.cep = cep;
+        this.cnpj = cnpj;
         setPerfil(Perfil.GESTOR);
     }
 
@@ -49,6 +53,7 @@ public class SeboDTO implements Serializable {
         this.email = obj.getEmail();
         this.senha = obj.getSenha();
         this.cep = obj.getCep();
+        this.cnpj = obj.getCnpj();
         setPerfil(Perfil.GESTOR);
     }
 
@@ -90,6 +95,14 @@ public class SeboDTO implements Serializable {
 
     public void setCep(String cep) {
         this.cep = cep;
+    }
+
+    public String getCnpj() {
+        return cnpj;
+    }
+
+    public void setCnpj(String cnpj) {
+        this.cnpj = cnpj;
     }
 
     public Perfil getPerfil() {
