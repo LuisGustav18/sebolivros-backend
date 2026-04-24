@@ -4,8 +4,6 @@ import com.luis.sebolivros.domain.autor.dto.AutorDTO;
 import com.luis.sebolivros.domain.autor.entity.Autor;
 import com.luis.sebolivros.domain.autor.repository.AutorRepository;
 import com.luis.sebolivros.domain.livro.entity.Livro;
-import com.luis.sebolivros.domain.livro.enums.Condicao;
-import com.luis.sebolivros.domain.livro.enums.Estado;
 import com.luis.sebolivros.exceptions.DataIntegrityViolationException;
 import com.luis.sebolivros.exceptions.ObjectNotFoundException;
 import org.junit.jupiter.api.*;
@@ -201,7 +199,7 @@ class AutorServiceTest {
 
         Autor obj = new Autor("Marcos", id);
 
-        Livro livro01 = new Livro(null, "A Odisseia", 3, obj, 1933,null, "9788563560271", Condicao.CONSERVADO, null);
+        Livro livro01 = new Livro(null, "A Odisseia", obj, 1933,null, "9788563560271", null);
 
         obj.getLivros().add(livro01);
 
