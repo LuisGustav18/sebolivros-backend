@@ -2,6 +2,8 @@ package com.luis.sebolivros.domain.livro.service;
 
 import com.luis.sebolivros.domain.autor.entity.Autor;
 import com.luis.sebolivros.domain.autor.service.AutorService;
+import com.luis.sebolivros.domain.estoque.repository.EstoqueRepository;
+import com.luis.sebolivros.domain.estoque.service.EstoqueService;
 import com.luis.sebolivros.domain.sebo.entity.Sebo;
 import com.luis.sebolivros.domain.sebo.service.SeboService;
 import com.luis.sebolivros.exceptions.ObjectNotFoundException;
@@ -9,8 +11,6 @@ import com.luis.sebolivros.domain.editora.entity.Editora;
 import com.luis.sebolivros.domain.editora.service.EditoraService;
 import com.luis.sebolivros.domain.livro.dto.LivroDTO;
 import com.luis.sebolivros.domain.livro.entity.Livro;
-import com.luis.sebolivros.domain.livro.enums.Condicao;
-import com.luis.sebolivros.domain.livro.enums.Estado;
 import com.luis.sebolivros.domain.livro.repository.LivroRepository;
 import com.luis.sebolivros.infra.storage.SupaBaseStorageService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,6 +34,9 @@ public class LivroService {
     private SeboService seboService;
 
     @Autowired
+    private EstoqueRepository estoqueRepository;
+
+    @Autowired
     private EditoraService editoraService;
 
     @Autowired
@@ -42,11 +45,6 @@ public class LivroService {
     public Livro findById(int id){
         Optional<Livro> obj = repository.findById(id);
         return obj.orElseThrow(() -> new ObjectNotFoundException("Livro não encontrado"));
-    }
-
-    public Livro findByIdAndSeboId(int id, int seboId){
-        Optional<Livro> obj = repository.findByIdAndSeboId(id, seboId);
-        return obj.orElseThrow(() -> new ObjectNotFoundException("Livro não encontrado no sebo"));
     }
 
     public List<Livro> findAll(){
@@ -70,8 +68,8 @@ public class LivroService {
         objDto.setId(id);
         Livro oldObj = findById(id);
 
-        if (oldObj.getSebo().getId() != objDto.getSebo()){
-            throw new DataIntegrityViolationException("Não e possível mudar local de cadastro");
+        if (estoqueRepository.existsByLivroId(id)){
+            throw new DataIntegrityViolationException("Não é possível alterar livro em estoques");
         }
 
         if (file != null && !file.isEmpty()){
@@ -85,8 +83,6 @@ public class LivroService {
         return repository.save(oldObj);
     }
 
-
-
     private Livro newLivro(LivroDTO objDto) {
         Autor autor = autorService.findById(objDto.getAutor());
         Editora editora = editoraService.findById(objDto.getEditora());
@@ -99,15 +95,11 @@ public class LivroService {
         }
 
         obj.setTitulo(objDto.getTitulo());
-        obj.setQuantidade(objDto.getQuantidade());
         obj.setAutor(autor);
         obj.setEditora(editora);
         obj.setIsbn(objDto.getIsbn());
-        obj.setCondicao(Condicao.toEnum(objDto.getCondicao()));
         obj.setAnoDeLancamento(objDto.getAnoDeLancamento());
-        obj.setEstado(Estado.toEnum(objDto.getEstado()));
         obj.setImageUrl(objDto.getImageUrl());
-        obj.setSebo(sebo);
         return obj;
     }
 }

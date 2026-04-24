@@ -15,9 +15,6 @@ public class LivroDTO implements Serializable {
     @NotNull(message = "O campo TITULO é requerido")
     private String titulo;
 
-    @NotNull(message = "O campo QUANTIDADE é requerido")
-    private int quantidade;
-
     @NotNull(message = "O campo AUTOR é requerido")
     private Integer autor;
 
@@ -30,17 +27,10 @@ public class LivroDTO implements Serializable {
     @NotNull(message = "O campo ISBN é requerido")
     private String isbn;
 
-    @NotNull(message = "O campo CONDIÇÃO é requerido")
-    private Integer condicao;
-
-    private Integer estado;
-
     @NotNull(message = "O campo ESTADO é requerido")
     private Integer sebo;
 
     private String imageUrl;
-
-    private String nomeSebo;
 
     private String nomeAutor;
 
@@ -56,16 +46,11 @@ public class LivroDTO implements Serializable {
     public LivroDTO(Livro obj) {
         this.id = obj.getId();
         this.titulo = obj.getTitulo();
-        this.quantidade = obj.getQuantidade();
         this.autor = obj.getAutor().getId();
         this.anoDeLancamento = obj.getAnoDeLancamento();
         this.editora = obj.getEditora().getId();
         this.isbn = obj.getIsbn();
-        this.condicao = obj.getCondicao().getCodigo();
-        this.estado = obj.getEstado().getCodigo();
         this.imageUrl = obj.getImageUrl();
-        this.sebo = obj.getSebo().getId();
-        this.nomeSebo = obj.getSebo().getNome();
         this.nomeAutor = obj.getAutor().getNome();
         this.nomeEditora = obj.getEditora().getNome();
     }
@@ -84,14 +69,6 @@ public class LivroDTO implements Serializable {
 
     public void setTitulo(String titulo) {
         this.titulo = titulo;
-    }
-
-    public int getQuantidade() {
-        return quantidade;
-    }
-
-    public void setQuantidade(int quantidade) {
-        this.quantidade = quantidade;
     }
 
     public Integer getAutor() {
@@ -118,22 +95,6 @@ public class LivroDTO implements Serializable {
         this.isbn = isbn;
     }
 
-    public Integer getCondicao() {
-        return condicao;
-    }
-
-    public void setCondicao(Integer condicao) {
-        this.condicao = condicao;
-    }
-
-    public Integer getEstado() {
-        return estado;
-    }
-
-    public void setEstado(Integer estado) {
-        this.estado = estado;
-    }
-
     public String getImageUrl() {
         return imageUrl;
     }
@@ -152,14 +113,6 @@ public class LivroDTO implements Serializable {
 
     public void setSebo(Integer sebo) {
         this.sebo = sebo;
-    }
-
-    public String getNomeSebo() {
-        return nomeSebo;
-    }
-
-    public void setNomeSebo(String nomeSebo) {
-        this.nomeSebo = nomeSebo;
     }
 
     public String getNomeAutor() {

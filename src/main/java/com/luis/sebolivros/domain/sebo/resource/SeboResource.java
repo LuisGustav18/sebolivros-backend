@@ -32,8 +32,8 @@ public class SeboResource {
         return ResponseEntity.ok().body(objDto);
     }
 
-    @GetMapping(value = "/{id}/books")
-    public ResponseEntity<SeboLivrosDTO> findBooks(@PathVariable Integer id){
+    @GetMapping(value = "/{id}/estoques")
+    public ResponseEntity<SeboLivrosDTO> findEstoques(@PathVariable Integer id){
         Sebo obj = service.findById(id);
         SeboLivrosDTO objDto = new SeboLivrosDTO(obj);
         return ResponseEntity.ok().body(objDto);

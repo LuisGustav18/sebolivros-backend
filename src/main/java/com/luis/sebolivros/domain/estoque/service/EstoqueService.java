@@ -1,17 +1,10 @@
 package com.luis.sebolivros.domain.estoque.service;
 
-import com.luis.sebolivros.domain.autor.entity.Autor;
-import com.luis.sebolivros.domain.autor.service.AutorService;
-import com.luis.sebolivros.domain.editora.entity.Editora;
-import com.luis.sebolivros.domain.editora.service.EditoraService;
 import com.luis.sebolivros.domain.estoque.dto.EstoqueDTO;
 import com.luis.sebolivros.domain.estoque.entity.Estoque;
 import com.luis.sebolivros.domain.estoque.enums.Condicao;
 import com.luis.sebolivros.domain.estoque.repository.EstoqueRepository;
-import com.luis.sebolivros.domain.livro.dto.LivroDTO;
 import com.luis.sebolivros.domain.livro.entity.Livro;
-import com.luis.sebolivros.domain.livro.enums.Estado;
-import com.luis.sebolivros.domain.livro.repository.LivroRepository;
 import com.luis.sebolivros.domain.livro.service.LivroService;
 import com.luis.sebolivros.domain.sebo.entity.Sebo;
 import com.luis.sebolivros.domain.sebo.service.SeboService;

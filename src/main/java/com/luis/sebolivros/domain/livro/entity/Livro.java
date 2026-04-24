@@ -3,9 +3,6 @@ package com.luis.sebolivros.domain.livro.entity;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.luis.sebolivros.domain.editora.entity.Editora;
 import com.luis.sebolivros.domain.autor.entity.Autor;
-import com.luis.sebolivros.domain.livro.enums.Condicao;
-import com.luis.sebolivros.domain.livro.enums.Estado;
-import com.luis.sebolivros.domain.sebo.entity.Sebo;
 import jakarta.persistence.*;
 
 import java.io.Serializable;
@@ -19,7 +16,6 @@ public class Livro implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String titulo;
-    private int quantidade;
 
     @ManyToOne
     @JoinColumn(name = "autor_id")
@@ -31,17 +27,10 @@ public class Livro implements Serializable {
     @JoinColumn(name = "editora_id")
     private Editora editora;
 
+    @Column(unique = true)
     private String isbn;
 
-    private Condicao condicao;
-
-    private Estado estado;
-
     private String imageUrl;
-
-    @ManyToOne
-    @JoinColumn(name = "sebo_id")
-    private Sebo sebo;
 
     @JsonFormat(pattern = "dd/MM/yyyy")
     private LocalDate dataCriacao = LocalDate.now();
@@ -50,42 +39,27 @@ public class Livro implements Serializable {
 
     }
 
-    public Livro(Integer id, String titulo, int quantidade,
-                 Autor autor, int anoDeLancamento, Editora editora, String isbn,
-                 Condicao condicao, Sebo sebo) {
+    public Livro(Integer id, String titulo, Autor autor,
+                 int anoDeLancamento, Editora editora, String isbn) {
         this.id = id;
         this.titulo = titulo;
-        this.quantidade = quantidade;
         this.autor = autor;
         this.anoDeLancamento = anoDeLancamento;
         this.editora = editora;
         this.isbn = isbn;
-        this.condicao = condicao;
-        this.sebo = sebo;
     }
 
-    public Livro(Integer id, String titulo, int quantidade,
-                 Autor autor, int anoDeLancamento, Editora editora, String isbn,
-                 Condicao condicao, String imageUrl, Sebo sebo) {
+    public Livro(Integer id, String titulo, Autor autor, int anoDeLancamento,
+                 Editora editora, String isbn, String imageUrl) {
         this.id = id;
         this.titulo = titulo;
-        this.quantidade = quantidade;
         this.autor = autor;
         this.anoDeLancamento = anoDeLancamento;
         this.editora = editora;
         this.isbn = isbn;
-        this.condicao = condicao;
         this.imageUrl = imageUrl;
-        this.sebo = sebo;
     }
 
-    @PrePersist
-    @PreUpdate
-    public void atualizarEstado(){
-        this.estado = this.quantidade > 0 ?
-                Estado.DISPONIVEL :
-                Estado.INDISPONIVEL;
-    }
 
     public Integer getId() {
         return id;
@@ -101,14 +75,6 @@ public class Livro implements Serializable {
 
     public void setTitulo(String titulo) {
         this.titulo = titulo;
-    }
-
-    public int getQuantidade() {
-        return quantidade;
-    }
-
-    public void setQuantidade(int quantidade) {
-        this.quantidade = quantidade;
     }
 
     public Autor getAutor() {
@@ -135,22 +101,6 @@ public class Livro implements Serializable {
         this.isbn = isbn;
     }
 
-    public Condicao getCondicao() {
-        return condicao;
-    }
-
-    public void setCondicao(Condicao condicao) {
-        this.condicao = condicao;
-    }
-
-    public Estado getEstado() {
-        return estado;
-    }
-
-    public void setEstado(Estado estado) {
-        this.estado = estado;
-    }
-
     public String getImageUrl() {
         return imageUrl;
     }
@@ -161,14 +111,6 @@ public class Livro implements Serializable {
 
     public LocalDate getDataCriacao() {
         return dataCriacao;
-    }
-
-    public Sebo getSebo() {
-        return sebo;
-    }
-
-    public void setSebo(Sebo sebo) {
-        this.sebo = sebo;
     }
 
     public int getAnoDeLancamento() {

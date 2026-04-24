@@ -2,7 +2,7 @@ package com.luis.sebolivros.domain.sebo.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.luis.sebolivros.domain.common.enums.Perfil;
-import com.luis.sebolivros.domain.livro.entity.Livro;
+import com.luis.sebolivros.domain.estoque.entity.Estoque;
 import com.luis.sebolivros.domain.sebo.dto.SeboDTO;
 import com.luis.sebolivros.domain.usuario.entity.Usuario;
 import jakarta.persistence.*;
@@ -22,7 +22,7 @@ public class Sebo extends Usuario {
 
     @OneToMany(mappedBy = "sebo")
     @JsonIgnore
-    private List<Livro> livros = new ArrayList<>();
+    private List<Estoque> estoques = new ArrayList<>();
 
     public Sebo(){
         super();
@@ -74,12 +74,12 @@ public class Sebo extends Usuario {
         this.cnpj = cnpj;
     }
 
-    public List<Livro> getLivros() {
-        return livros;
+    public List<Estoque> getEstoques() {
+        return estoques;
     }
 
-    public void setLivros(List<Livro> livros) {
-        this.livros = livros;
+    public void setEstoques(List<Estoque> estoques) {
+        this.estoques = estoques;
     }
 
     @Override

@@ -1,13 +1,9 @@
 package com.luis.sebolivros.domain.sebo.dto;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
-import com.luis.sebolivros.domain.common.enums.Perfil;
-import com.luis.sebolivros.domain.livro.dto.LivroDTO;
+import com.luis.sebolivros.domain.estoque.dto.EstoqueDTO;
 import com.luis.sebolivros.domain.sebo.entity.Sebo;
-import jakarta.validation.constraints.NotNull;
 
 import java.io.Serializable;
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,7 +13,7 @@ public class SeboLivrosDTO implements Serializable {
 
     private String nome;
 
-    private List<LivroDTO> livros = new ArrayList<>();
+    private List<EstoqueDTO> estoques = new ArrayList<>();
 
     public SeboLivrosDTO(){
 
@@ -26,7 +22,7 @@ public class SeboLivrosDTO implements Serializable {
     public SeboLivrosDTO(Sebo obj) {
         this.id = obj.getId();
         this.nome = obj.getNome();
-        this.livros = obj.getLivros().stream().map(LivroDTO::new).toList();
+        this.estoques = obj.getEstoques().stream().map(EstoqueDTO::new).toList();
     }
 
     public Integer getId() {
@@ -45,11 +41,11 @@ public class SeboLivrosDTO implements Serializable {
         this.nome = nome;
     }
 
-    public List<LivroDTO> getLivros() {
-        return livros;
+    public List<EstoqueDTO> getEstoques() {
+        return estoques;
     }
 
-    public void setLivros(List<LivroDTO> livros) {
-        this.livros = livros;
+    public void setEstoques(List<EstoqueDTO> estoques) {
+        this.estoques = estoques;
     }
 }
