@@ -27,7 +27,7 @@ public class LivroDTO implements Serializable {
     @NotNull(message = "O campo ISBN é requerido")
     private String isbn;
 
-    @NotNull(message = "O campo ESTADO é requerido")
+    @NotNull(message = "O campo SEBO é requerido")
     private Integer sebo;
 
     private String imageUrl;
