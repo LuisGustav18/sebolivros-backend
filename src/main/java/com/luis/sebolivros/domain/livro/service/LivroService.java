@@ -86,7 +86,6 @@ public class LivroService {
     private Livro newLivro(LivroDTO objDto) {
         Autor autor = autorService.findById(objDto.getAutor());
         Editora editora = editoraService.findById(objDto.getEditora());
-        Sebo sebo = seboService.findById(objDto.getSebo());
 
         Livro obj = new Livro();
 
