@@ -27,9 +27,6 @@ public class LivroDTO implements Serializable {
     @NotNull(message = "O campo ISBN é requerido")
     private String isbn;
 
-    @NotNull(message = "O campo SEBO é requerido")
-    private Integer sebo;
-
     private String imageUrl;
 
     private String nomeAutor;
@@ -105,14 +102,6 @@ public class LivroDTO implements Serializable {
 
     public LocalDate getDataCriacao() {
         return dataCriacao;
-    }
-
-    public Integer getSebo() {
-        return sebo;
-    }
-
-    public void setSebo(Integer sebo) {
-        this.sebo = sebo;
     }
 
     public String getNomeAutor() {
