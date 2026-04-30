@@ -1,5 +1,7 @@
 package com.luis.sebolivros.domain.livro.resource;
 
+import com.luis.sebolivros.domain.estoque.dto.EstoqueDTO;
+import com.luis.sebolivros.domain.estoque.entity.Estoque;
 import com.luis.sebolivros.domain.livro.dto.LivroDTO;
 import com.luis.sebolivros.domain.livro.entity.Livro;
 import com.luis.sebolivros.domain.livro.service.LivroService;
@@ -33,6 +35,13 @@ public class LivrosResource {
     public ResponseEntity<List<LivroDTO>> findAll(){
         List<Livro> list = service.findAll();
         List<LivroDTO> listDto = list.stream().map(LivroDTO::new).toList();
+        return ResponseEntity.ok().body(listDto);
+    }
+
+    @GetMapping(value = "/{id}/estoques")
+    public ResponseEntity<List<EstoqueDTO>> findByLivroId(@PathVariable Integer id){
+        List<Estoque> list = service.findByLivroId(id);
+        List<EstoqueDTO> listDto = list.stream().map(EstoqueDTO::new).toList();
         return ResponseEntity.ok().body(listDto);
     }
 

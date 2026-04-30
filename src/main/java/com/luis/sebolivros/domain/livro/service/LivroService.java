@@ -2,6 +2,7 @@ package com.luis.sebolivros.domain.livro.service;
 
 import com.luis.sebolivros.domain.autor.entity.Autor;
 import com.luis.sebolivros.domain.autor.service.AutorService;
+import com.luis.sebolivros.domain.estoque.entity.Estoque;
 import com.luis.sebolivros.domain.estoque.repository.EstoqueRepository;
 import com.luis.sebolivros.domain.estoque.service.EstoqueService;
 import com.luis.sebolivros.domain.sebo.entity.Sebo;
@@ -49,6 +50,10 @@ public class LivroService {
 
     public List<Livro> findAll(){
         return repository.findAll();
+    }
+
+    public List<Estoque> findByLivroId(int id){
+        return this.estoqueRepository.findByLivroId(id);
     }
 
     public Livro create(LivroDTO objDto, MultipartFile file){

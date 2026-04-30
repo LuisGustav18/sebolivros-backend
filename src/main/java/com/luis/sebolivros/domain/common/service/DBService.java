@@ -7,6 +7,7 @@ import com.luis.sebolivros.domain.cliente.repository.ClienteRepository;
 import com.luis.sebolivros.domain.editora.entity.Editora;
 import com.luis.sebolivros.domain.editora.repository.EditoraRepository;
 import com.luis.sebolivros.domain.estoque.entity.Estoque;
+import com.luis.sebolivros.domain.estoque.enums.Condicao;
 import com.luis.sebolivros.domain.estoque.repository.EstoqueRepository;
 import com.luis.sebolivros.domain.livro.entity.Livro;
 import com.luis.sebolivros.domain.livro.repository.LivroRepository;
@@ -94,21 +95,22 @@ public class DBService {
         livro12.setImageUrl("https://utskkhxqkzwawkhnoxmq.supabase.co/storage/v1/object/public/livros/MemoriasPostumas.jpg");
         livro13.setImageUrl("https://utskkhxqkzwawkhnoxmq.supabase.co/storage/v1/object/public/livros/CrimeeCastigo.jpg");
 
-        Estoque estoque01 = new Estoque(null, 55.54, 2, com.luis.sebolivros.domain.estoque.enums.Condicao.CONSERVADO, livro01,  sebo01);
-        Estoque estoque02 = new Estoque(null, 39.90, 1, com.luis.sebolivros.domain.estoque.enums.Condicao.CONSERVADO, livro02, sebo01);
-        Estoque estoque03 = new Estoque(null, 29.90, 3, com.luis.sebolivros.domain.estoque.enums.Condicao.USADO, livro03, sebo01);
-        Estoque estoque04 = new Estoque(null, 45.00, 2, com.luis.sebolivros.domain.estoque.enums.Condicao.CONSERVADO, livro04, sebo01);
-        Estoque estoque05 = new Estoque(null, 79.90, 1, com.luis.sebolivros.domain.estoque.enums.Condicao.NOVO, livro05, sebo01);
+        Estoque estoque01 = new Estoque(null, 55.54, 2, Condicao.CONSERVADO, livro01,  sebo01);
+        Estoque estoque02 = new Estoque(null, 39.90, 1, Condicao.CONSERVADO, livro02, sebo01);
+        Estoque estoque03 = new Estoque(null, 29.90, 3, Condicao.USADO, livro03, sebo01);
+        Estoque estoque04 = new Estoque(null, 45.00, 2, Condicao.CONSERVADO, livro04, sebo01);
+        Estoque estoque05 = new Estoque(null, 79.90, 1, Condicao.NOVO, livro05, sebo01);
 
-        Estoque estoque06 = new Estoque(null, 25.50, 2, com.luis.sebolivros.domain.estoque.enums.Condicao.USADO, livro06, sebo03);
-        Estoque estoque07 = new Estoque(null, 34.90, 1, com.luis.sebolivros.domain.estoque.enums.Condicao.CONSERVADO, livro07, sebo04);
-        Estoque estoque08 = new Estoque(null, 42.00, 2, com.luis.sebolivros.domain.estoque.enums.Condicao.CONSERVADO, livro08, sebo05);
-        Estoque estoque09 = new Estoque(null, 37.80, 1, com.luis.sebolivros.domain.estoque.enums.Condicao.USADO, livro09, sebo05);
+        Estoque estoque06 = new Estoque(null, 25.50, 2, Condicao.USADO, livro06, sebo03);
+        Estoque estoque07 = new Estoque(null, 34.90, 1, Condicao.CONSERVADO, livro07, sebo04);
+        Estoque estoque08 = new Estoque(null, 42.00, 2, Condicao.CONSERVADO, livro08, sebo05);
+        Estoque estoque09 = new Estoque(null, 37.80, 1, Condicao.USADO, livro09, sebo05);
 
-        Estoque estoque10 = new Estoque(null, 49.90, 2, com.luis.sebolivros.domain.estoque.enums.Condicao.NOVO, livro10, sebo02);
-        Estoque estoque11 = new Estoque(null, 28.75, 3, com.luis.sebolivros.domain.estoque.enums.Condicao.CONSERVADO, livro11, sebo02);
-        Estoque estoque12 = new Estoque(null, 31.20, 2, com.luis.sebolivros.domain.estoque.enums.Condicao.CONSERVADO, livro12, sebo02);
-        Estoque estoque13 = new Estoque(null, 44.60, 1, com.luis.sebolivros.domain.estoque.enums.Condicao.USADO, livro13, sebo02);
+        Estoque estoque10 = new Estoque(null, 49.90, 2, Condicao.NOVO, livro10, sebo02);
+        Estoque estoque11 = new Estoque(null, 28.75, 3, Condicao.CONSERVADO, livro11, sebo02);
+        Estoque estoque12 = new Estoque(null, 31.20, 2, Condicao.CONSERVADO, livro12, sebo02);
+        Estoque estoque13 = new Estoque(null, 44.60, 1, Condicao.USADO, livro13, sebo02);
+        Estoque estoque14 = new Estoque(null, 45.60, 1, Condicao.NOVO, livro13, sebo02);
 
         Cliente cliente01 = new Cliente(null, "Marcos", "marcos@gmail.com", encoder.encode("123"), "11144477735");
         Cliente cliente02 = new Cliente(null, "Ana Paula", "ana.paula@gmail.com", encoder.encode("123"), "12345678909");
@@ -138,7 +140,7 @@ public class DBService {
                 estoque01, estoque02, estoque03, estoque04,
                 estoque05, estoque06, estoque07, estoque08,
                 estoque09, estoque10, estoque11, estoque12,
-                estoque13));
+                estoque13, estoque14));
 
         clienteRepository.saveAll(Arrays.asList(
                 cliente01, cliente02,

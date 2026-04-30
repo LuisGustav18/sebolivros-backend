@@ -9,4 +9,6 @@ import java.util.Optional;
 public interface EstoqueRepository extends JpaRepository<Estoque, Integer> {
 
     boolean existsByLivroId(Integer id);
+
+    List<Estoque> findByLivroId(int id);
 }
