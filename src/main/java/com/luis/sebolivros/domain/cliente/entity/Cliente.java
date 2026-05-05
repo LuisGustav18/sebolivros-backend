@@ -1,15 +1,21 @@
 package com.luis.sebolivros.domain.cliente.entity;
 
+import com.luis.sebolivros.domain.carrinho.entity.Carrinho;
 import com.luis.sebolivros.domain.cliente.dto.ClienteDTO;
 import com.luis.sebolivros.domain.common.enums.Perfil;
 import com.luis.sebolivros.domain.usuario.entity.Usuario;
 import jakarta.persistence.*;
+
+import java.util.List;
 
 @Entity
 public class Cliente extends Usuario {
 
     @Column(unique = true)
     private String cpf;
+
+    @OneToMany(mappedBy = "cliente")
+    private List<Carrinho> carrinhos;
 
     public Cliente(){
         super();
