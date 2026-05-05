@@ -88,7 +88,7 @@ public class EstoqueService {
 
         obj.setPreco(objDto.getPreco());
         obj.setQuantidade(objDto.getQuantidade());
-        obj.setCondicao(Condicao.toEnum(objDto.getCondicao()));
+        obj.setCondicao(Condicao.toEnum(objDto.getCondicao().getCodigo()));
         obj.setImageUrl(objDto.getImageUrl());
         obj.setLivro(livro);
         obj.setSebo(sebo);
