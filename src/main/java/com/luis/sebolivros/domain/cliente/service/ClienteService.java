@@ -1,16 +1,16 @@
 package com.luis.sebolivros.domain.cliente.service;
 
+import com.luis.sebolivros.domain.carrinho.dto.CarrinhoDTO;
+import com.luis.sebolivros.domain.carrinho.entity.Carrinho;
+import com.luis.sebolivros.domain.carrinho.service.CarrinhoService;
 import com.luis.sebolivros.domain.cliente.dto.ClienteDTO;
 import com.luis.sebolivros.domain.cliente.entity.Cliente;
 import com.luis.sebolivros.domain.cliente.repository.ClienteRepository;
 import com.luis.sebolivros.domain.usuario.entity.Usuario;
 import com.luis.sebolivros.domain.usuario.repository.UsuarioRepository;
 import com.luis.sebolivros.exceptions.ObjectNotFoundException;
-import com.luis.sebolivros.domain.sebo.entity.Sebo;
-import com.luis.sebolivros.domain.sebo.repository.SeboRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import com.luis.sebolivros.exceptions.DataIntegrityViolationException;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -29,6 +29,9 @@ public class ClienteService {
     @Autowired
     private PasswordEncoder encoder;
 
+    @Autowired
+    private CarrinhoService carrinhoService;
+
     public Cliente findById(int id){
         Optional<Cliente> obj = repository.findById(id);
         return obj.orElseThrow(() -> new ObjectNotFoundException("Cliente não encontrado"));
@@ -40,22 +43,24 @@ public class ClienteService {
 
     public Cliente create(ClienteDTO objDto){
         objDto.setId(null);
-        validarEmail(objDto);
-        validarCpf(objDto.getCpf());
+
+        validarCampos(objDto);
+
         objDto.setSenha(encoder.encode(objDto.getSenha()));
-        return repository.save(new Cliente(objDto));
+
+        Cliente obj = new Cliente(objDto);
+        Carrinho carrinho = new Carrinho(obj);
+        obj.getCarrinhos().add(carrinho);
+
+        return repository.save(obj);
     }
 
     public Cliente update(Integer id, ClienteDTO objDto){
         objDto.setId(id);
         Cliente oldObj = findById(id);
 
-        if (!oldObj.getEmail().equals(objDto.getEmail())){
-            validarEmail(objDto);
-        }
-
-        if (!oldObj.getCpf().equals(objDto.getCpf())){
-            validarCpf(objDto.getCpf());
+        if (!oldObj.getEmail().equals(objDto.getEmail()) || !oldObj.getCpf().equals(objDto.getCpf())){
+            validarCampos(objDto);
         }
 
         if (!objDto.getSenha().equals(oldObj.getSenha())){
@@ -69,6 +74,11 @@ public class ClienteService {
     public void delete(Integer id){
         Cliente obj = findById(id);
         repository.delete(obj);
+    }
+
+    private void validarCampos(ClienteDTO objDto){
+        validarEmail(objDto);
+        validarCpf(objDto.getCpf());
     }
 
     private void validarCpf(String cpf){

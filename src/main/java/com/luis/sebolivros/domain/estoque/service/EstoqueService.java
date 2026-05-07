@@ -74,6 +74,12 @@ public class EstoqueService {
         return repository.save(oldObj);
     }
 
+    public void atualizarQuantidade(int id, int quantidade){
+        Estoque obj = findById(id);
+        obj.setQuantidade(quantidade);
+        repository.save(obj);
+    }
+
 
 
     private Estoque newEstoque(EstoqueDTO objDto) {

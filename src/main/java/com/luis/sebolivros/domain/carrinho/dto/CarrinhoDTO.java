@@ -29,6 +29,10 @@ public class CarrinhoDTO implements Serializable {
     public CarrinhoDTO(){
     }
 
+    public CarrinhoDTO(Integer cliente){
+        this.cliente = cliente;
+    }
+
     public Integer getId() {
         return id;
     }

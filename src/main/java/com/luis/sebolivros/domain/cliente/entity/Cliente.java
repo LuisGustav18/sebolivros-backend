@@ -6,6 +6,7 @@ import com.luis.sebolivros.domain.common.enums.Perfil;
 import com.luis.sebolivros.domain.usuario.entity.Usuario;
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -14,8 +15,9 @@ public class Cliente extends Usuario {
     @Column(unique = true)
     private String cpf;
 
-    @OneToMany(mappedBy = "cliente")
-    private List<Carrinho> carrinhos;
+    // cascade -> Permite adicionar um carrinho sem id do cliente ainda salvo
+    @OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL)
+    private List<Carrinho> carrinhos = new ArrayList<>();
 
     public Cliente(){
         super();
@@ -44,4 +46,9 @@ public class Cliente extends Usuario {
     public void setCpf(String cpf) {
         this.cpf = cpf;
     }
+
+    public List<Carrinho> getCarrinhos() {
+        return carrinhos;
+    }
+
 }

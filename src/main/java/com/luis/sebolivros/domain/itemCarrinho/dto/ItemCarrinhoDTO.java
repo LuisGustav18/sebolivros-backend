@@ -1,14 +1,10 @@
-package com.luis.sebolivros.domain.itemCarrinho.entity;
+package com.luis.sebolivros.domain.itemCarrinho.dto;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.luis.sebolivros.domain.carrinho.entity.Carrinho;
-import com.luis.sebolivros.domain.estoque.entity.Estoque;
-import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 
 import java.io.Serializable;
 import java.time.LocalDate;
-import java.util.Objects;
 
 public class ItemCarrinhoDTO implements Serializable {
 
