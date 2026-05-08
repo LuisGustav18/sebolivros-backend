@@ -1,7 +1,9 @@
 package com.luis.sebolivros.domain.carrinho.dto;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.luis.sebolivros.domain.carrinho.entity.Carrinho;
 import com.luis.sebolivros.domain.carrinho.enums.Status;
+import com.luis.sebolivros.domain.itemCarrinho.dto.ItemCarrinhoDTO;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 
@@ -16,7 +18,7 @@ public class CarrinhoDTO implements Serializable {
     @NotNull(message = "O campo CLIENTE é requerido")
     private Integer cliente;
 
-    private List<Integer> itens;
+    private List<ItemCarrinhoDTO> itens;
 
     @NotNull(message = "O campo STATUS é requerido")
     private Integer status;
@@ -31,6 +33,14 @@ public class CarrinhoDTO implements Serializable {
 
     public CarrinhoDTO(Integer cliente){
         this.cliente = cliente;
+    }
+
+    public CarrinhoDTO(Carrinho obj){
+        this.id = obj.getId();
+        this.cliente = obj.getCliente().getId();
+        this.itens = obj.getItens().stream().map(ItemCarrinhoDTO::new).toList();
+        this.status = obj.getStatus().getCodigo();
+        this.subTotal = obj.getSubTotal();
     }
 
     public Integer getId() {
@@ -49,7 +59,7 @@ public class CarrinhoDTO implements Serializable {
         this.cliente = cliente;
     }
 
-    public List<Integer> getItens() {
+    public List<ItemCarrinhoDTO> getItens() {
         return itens;
     }
 

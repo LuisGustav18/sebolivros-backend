@@ -1,5 +1,7 @@
 package com.luis.sebolivros.domain.cliente.resource;
 
+import com.luis.sebolivros.domain.carrinho.dto.CarrinhoDTO;
+import com.luis.sebolivros.domain.carrinho.entity.Carrinho;
 import com.luis.sebolivros.domain.cliente.dto.ClienteDTO;
 import com.luis.sebolivros.domain.cliente.entity.Cliente;
 import com.luis.sebolivros.domain.cliente.service.ClienteService;
@@ -24,6 +26,19 @@ public class ClienteResource {
         Cliente obj = service.findById(id);
         ClienteDTO objDto = new ClienteDTO(obj);
         return ResponseEntity.ok().body(objDto);
+    }
+
+    @GetMapping(value = "/{id}/carrinhos")
+    public ResponseEntity<List<CarrinhoDTO>> findAllCarrinhosById(@PathVariable Integer id){
+        List<Carrinho> list = service.findAllCarrinhosById(id);
+        List<CarrinhoDTO> listDto = list.stream().map(CarrinhoDTO::new).toList();
+        return ResponseEntity.ok().body(listDto);
+    }
+
+    @GetMapping(value = "/{id}/carrinho")
+    public ResponseEntity<CarrinhoDTO> findCarrinhoAtivoById(@PathVariable Integer id){
+        Carrinho obj = service.findCarrinhoAtivoById(id);
+        return ResponseEntity.ok().body(new CarrinhoDTO(obj));
     }
 
     @GetMapping

@@ -2,6 +2,8 @@ package com.luis.sebolivros.domain.cliente.service;
 
 import com.luis.sebolivros.domain.carrinho.dto.CarrinhoDTO;
 import com.luis.sebolivros.domain.carrinho.entity.Carrinho;
+import com.luis.sebolivros.domain.carrinho.enums.Status;
+import com.luis.sebolivros.domain.carrinho.repository.CarrinhoRepository;
 import com.luis.sebolivros.domain.carrinho.service.CarrinhoService;
 import com.luis.sebolivros.domain.cliente.dto.ClienteDTO;
 import com.luis.sebolivros.domain.cliente.entity.Cliente;
@@ -32,9 +34,24 @@ public class ClienteService {
     @Autowired
     private CarrinhoService carrinhoService;
 
+    @Autowired
+    private CarrinhoRepository carrinhoRepository;
+
     public Cliente findById(int id){
         Optional<Cliente> obj = repository.findById(id);
         return obj.orElseThrow(() -> new ObjectNotFoundException("Cliente não encontrado"));
+    }
+
+    public List<Carrinho> findAllCarrinhosById(int id){
+        return carrinhoRepository.findByClienteIdAndStatus(id, Status.FINALIZADO);
+    }
+
+    public Carrinho findCarrinhoAtivoById(int id){
+        List<Carrinho> list = carrinhoRepository.findByClienteIdAndStatus(id, Status.ATIVO);
+        if (list.size() != 1){
+            throw new DataIntegrityViolationException("Não e possível existir mais de um carrinho ativo");
+        }
+        return list.get(0);
     }
 
     public List<Cliente> findAll(){
