@@ -1,6 +1,7 @@
 package com.luis.sebolivros.domain.itemCarrinho.dto;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.luis.sebolivros.domain.itemCarrinho.entity.ItemCarrinho;
 import jakarta.validation.constraints.NotNull;
 
 import java.io.Serializable;
@@ -30,6 +31,12 @@ public class ItemCarrinhoDTO implements Serializable {
         this.carrinho = carrinho;
         this.estoque = estoque;
         this.quantidade = quantidade;
+    }
+
+    public ItemCarrinhoDTO(ItemCarrinho obj) {
+        this.carrinho = obj.getCarrinho().getId();
+        this.estoque = obj.getEstoque().getId();
+        this.quantidade = obj.getQuantidade();
     }
 
     public Integer getId() {
