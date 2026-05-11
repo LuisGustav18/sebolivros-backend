@@ -20,6 +20,8 @@ public class ItemCarrinhoDTO implements Serializable {
     @NotNull(message = "O campo QUANTIDADE é requerido")
     private Integer quantidade;
 
+    private String tituloLivro;
+
     @JsonFormat(pattern = "dd/MM/yyyy")
     private LocalDate dataCriacao = LocalDate.now();
 
@@ -38,6 +40,7 @@ public class ItemCarrinhoDTO implements Serializable {
         this.carrinho = obj.getCarrinho().getId();
         this.estoque = obj.getEstoque().getId();
         this.quantidade = obj.getQuantidade();
+        this.tituloLivro = obj.getEstoque().getLivro().getTitulo();
     }
 
     public Integer getId() {
@@ -78,5 +81,9 @@ public class ItemCarrinhoDTO implements Serializable {
 
     public void setDataCriacao(LocalDate dataCriacao) {
         this.dataCriacao = dataCriacao;
+    }
+
+    public String getTituloLivro() {
+        return tituloLivro;
     }
 }
