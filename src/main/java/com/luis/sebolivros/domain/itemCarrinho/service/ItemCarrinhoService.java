@@ -3,6 +3,8 @@ package com.luis.sebolivros.domain.itemCarrinho.service;
 import com.luis.sebolivros.domain.carrinho.entity.Carrinho;
 import com.luis.sebolivros.domain.carrinho.enums.Status;
 import com.luis.sebolivros.domain.carrinho.service.CarrinhoService;
+import com.luis.sebolivros.domain.cliente.entity.Cliente;
+import com.luis.sebolivros.domain.cliente.service.ClienteService;
 import com.luis.sebolivros.domain.estoque.entity.Estoque;
 import com.luis.sebolivros.domain.estoque.service.EstoqueService;
 import com.luis.sebolivros.domain.itemCarrinho.dto.ItemCarrinhoDTO;

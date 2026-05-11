@@ -34,6 +34,7 @@ public class ItemCarrinhoDTO implements Serializable {
     }
 
     public ItemCarrinhoDTO(ItemCarrinho obj) {
+        this.id = obj.getId();
         this.carrinho = obj.getCarrinho().getId();
         this.estoque = obj.getEstoque().getId();
         this.quantidade = obj.getQuantidade();

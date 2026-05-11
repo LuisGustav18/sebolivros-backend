@@ -6,6 +6,7 @@ import com.luis.sebolivros.domain.itemCarrinho.service.ItemCarrinhoService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
@@ -32,6 +33,7 @@ public class ItemCarrinhoResource {
         return ResponseEntity.ok().body(new ItemCarrinhoDTO(obj));
     }
 
+    @PreAuthorize("hasAnyRole('CLIENTE')")
     @PostMapping
     public ResponseEntity<ItemCarrinhoDTO> create(@Valid @RequestBody ItemCarrinhoDTO objDto){
         ItemCarrinho obj = service.create(objDto);
@@ -39,12 +41,14 @@ public class ItemCarrinhoResource {
         return ResponseEntity.created(uri).build();
     }
 
+    @PreAuthorize("hasAnyRole('CLIENTE')")
     @PutMapping(value = "/{id}")
     public ResponseEntity<ItemCarrinhoDTO> update(@PathVariable int id,@Valid @RequestBody ItemCarrinhoDTO objDto){
         ItemCarrinho obj = service.update(id, objDto);
         return ResponseEntity.ok().body(new ItemCarrinhoDTO(obj));
     }
 
+    @PreAuthorize("hasAnyRole('CLIENTE')")
     @DeleteMapping(value = "/{id}")
     public ResponseEntity<ItemCarrinhoDTO> delete(@PathVariable int id){
         service.delete(id);

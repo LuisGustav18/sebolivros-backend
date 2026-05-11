@@ -5,6 +5,7 @@ import com.luis.sebolivros.domain.carrinho.entity.Carrinho;
 import com.luis.sebolivros.domain.carrinho.service.CarrinhoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -29,6 +30,7 @@ public class CarrinhoResource {
         return ResponseEntity.ok().body(new CarrinhoDTO(obj));
     }
 
+    @PreAuthorize("hasAnyRole('CLIENTE')")
     @PostMapping(value = "/{id}/finalizar")
     public ResponseEntity<CarrinhoDTO> finalizar(@PathVariable int id){
         Carrinho obj = service.finalizar(id);

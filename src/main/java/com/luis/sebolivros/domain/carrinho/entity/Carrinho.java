@@ -8,6 +8,7 @@ import jakarta.persistence.*;
 
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -23,7 +24,7 @@ public class Carrinho implements Serializable {
     private Cliente cliente;
 
     @OneToMany(mappedBy = "carrinho")
-    private List<ItemCarrinho> itens;
+    private List<ItemCarrinho> itens = new ArrayList<>();
 
     private Status status;
 

@@ -20,6 +20,8 @@ public class ItemCarrinho implements Serializable {
     @JoinColumn(name = "carrinho_id")
     private Carrinho carrinho;
 
+    @ManyToOne
+    @JoinColumn(name = "estoque_id")
     private Estoque estoque;
 
     private Integer quantidade;
@@ -38,7 +40,7 @@ public class ItemCarrinho implements Serializable {
     }
 
     public Double valorProduto(){
-        return estoque.getPreco();
+        return estoque.getPreco() * quantidade;
     }
 
     public Integer getId() {

@@ -32,9 +32,6 @@ public class ClienteService {
     private PasswordEncoder encoder;
 
     @Autowired
-    private CarrinhoService carrinhoService;
-
-    @Autowired
     private CarrinhoRepository carrinhoRepository;
 
     public Cliente findById(int id){

@@ -2,6 +2,8 @@ package com.luis.sebolivros.domain.common.service;
 
 import com.luis.sebolivros.domain.autor.entity.Autor;
 import com.luis.sebolivros.domain.autor.repository.AutorRepository;
+import com.luis.sebolivros.domain.carrinho.entity.Carrinho;
+import com.luis.sebolivros.domain.carrinho.repository.CarrinhoRepository;
 import com.luis.sebolivros.domain.cliente.entity.Cliente;
 import com.luis.sebolivros.domain.cliente.repository.ClienteRepository;
 import com.luis.sebolivros.domain.editora.entity.Editora;
@@ -9,6 +11,8 @@ import com.luis.sebolivros.domain.editora.repository.EditoraRepository;
 import com.luis.sebolivros.domain.estoque.entity.Estoque;
 import com.luis.sebolivros.domain.estoque.enums.Condicao;
 import com.luis.sebolivros.domain.estoque.repository.EstoqueRepository;
+import com.luis.sebolivros.domain.itemCarrinho.entity.ItemCarrinho;
+import com.luis.sebolivros.domain.itemCarrinho.repository.ItemCarrinhoRepository;
 import com.luis.sebolivros.domain.livro.entity.Livro;
 import com.luis.sebolivros.domain.livro.repository.LivroRepository;
 import com.luis.sebolivros.domain.sebo.entity.Sebo;
@@ -39,6 +43,12 @@ public class DBService {
 
     @Autowired
     private EstoqueRepository estoqueRepository;
+
+    @Autowired
+    private ItemCarrinhoRepository itemCarrinhoRepository;
+
+    @Autowired
+    private CarrinhoRepository carrinhoRepository;
 
     @Autowired
     private PasswordEncoder encoder;
@@ -118,6 +128,28 @@ public class DBService {
         Cliente cliente04 = new Cliente(null, "Lucas Silva", "lucas.silva@gmail.com", encoder.encode("123"), "52998224725");
         Cliente cliente05 = new Cliente(null, "Beatriz Santos", "beatriz.santos@gmail.com", encoder.encode("123"), "32165498708");
 
+        Carrinho carrinho01 = new Carrinho(cliente01);
+        Carrinho carrinho02 = new Carrinho(cliente02);
+        Carrinho carrinho03 = new Carrinho(cliente03);
+        Carrinho carrinho04 = new Carrinho(cliente04);
+        Carrinho carrinho05 = new Carrinho(cliente05);
+
+        ItemCarrinho item01 = new ItemCarrinho(carrinho01, estoque01, 1);
+        ItemCarrinho item02 = new ItemCarrinho(carrinho01, estoque04, 2);
+
+        ItemCarrinho item03 = new ItemCarrinho(carrinho02, estoque03, 1);
+
+        ItemCarrinho item04 = new ItemCarrinho(carrinho03, estoque05, 1);
+        ItemCarrinho item05 = new ItemCarrinho(carrinho03, estoque10, 1);
+        ItemCarrinho item06 = new ItemCarrinho(carrinho03, estoque11, 3);
+
+        ItemCarrinho item07 = new ItemCarrinho(carrinho04, estoque07, 1);
+
+        ItemCarrinho item08 = new ItemCarrinho(carrinho05, estoque08, 2);
+        ItemCarrinho item09 = new ItemCarrinho(carrinho05, estoque12, 1);
+
+        carrinho01.atualizarSubTotal();
+
         seboRepository.saveAll(Arrays.asList(
                 sebo01, sebo02, sebo03,
                 sebo04, sebo05));
@@ -146,5 +178,19 @@ public class DBService {
                 cliente01, cliente02,
                 cliente03, cliente04,
                 cliente05));
+
+        carrinhoRepository.saveAll(Arrays.asList(
+                carrinho01, carrinho02,
+                carrinho03, carrinho04,
+                carrinho05
+        ));
+
+        itemCarrinhoRepository.saveAll(Arrays.asList(
+                item01, item02,
+                item03,
+                item04, item05, item06,
+                item07,
+                item08, item09
+        ));
     }
 }

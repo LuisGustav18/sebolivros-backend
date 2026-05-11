@@ -24,9 +24,6 @@ public class CarrinhoService {
     private CarrinhoRepository repository;
 
     @Autowired
-    private ItemCarrinhoService itemCarrinhoService;
-
-    @Autowired
     private ClienteService clienteService;
 
     @Autowired
