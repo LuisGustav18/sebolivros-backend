@@ -1,5 +1,6 @@
 package com.luis.sebolivros.domain.cliente.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.luis.sebolivros.domain.carrinho.entity.Carrinho;
 import com.luis.sebolivros.domain.cliente.dto.ClienteDTO;
 import com.luis.sebolivros.domain.common.enums.Perfil;
@@ -17,6 +18,7 @@ public class Cliente extends Usuario {
 
     // cascade -> Permite adicionar um carrinho sem id do cliente ainda salvo
     @OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL)
+    @JsonIgnore
     private List<Carrinho> carrinhos = new ArrayList<>();
 
     public Cliente(){
