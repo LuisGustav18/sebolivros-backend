@@ -22,6 +22,12 @@ public class ItemCarrinhoDTO implements Serializable {
 
     private String tituloLivro;
 
+    private String autor;
+
+    private String imageUrl;
+
+    private Double preco;
+
     @JsonFormat(pattern = "dd/MM/yyyy")
     private LocalDate dataCriacao = LocalDate.now();
 
@@ -41,6 +47,11 @@ public class ItemCarrinhoDTO implements Serializable {
         this.estoque = obj.getEstoque().getId();
         this.quantidade = obj.getQuantidade();
         this.tituloLivro = obj.getEstoque().getLivro().getTitulo();
+        this.autor = obj.getEstoque().getLivro().getAutor().getNome();
+        this.imageUrl = obj.getEstoque().getImageUrl() != null ?
+                obj.getEstoque().getImageUrl() :
+                obj.getEstoque().getLivro().getImageUrl();
+        this.preco = obj.getEstoque().getPreco();
     }
 
     public Integer getId() {
@@ -85,5 +96,17 @@ public class ItemCarrinhoDTO implements Serializable {
 
     public String getTituloLivro() {
         return tituloLivro;
+    }
+
+    public String getAutor() {
+        return autor;
+    }
+
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public Double getPreco() {
+        return preco;
     }
 }
