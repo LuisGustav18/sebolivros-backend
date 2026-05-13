@@ -25,6 +25,8 @@ public class TokenService {
             String token = JWT.create()
                     .withIssuer("sebolivros")
                     .withSubject(user.getUsername()) // Vai ser passador pro front end coloque id tbm e perfil
+                    .withClaim("id", user.getId())  // withclaim = informações extras
+                    .withClaim("perfil", user.getRole().name()) // Name pega o nome do enum
                     .withExpiresAt(genExpirationDate())
                     .sign(algorithm);
             return token;

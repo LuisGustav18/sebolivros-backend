@@ -33,7 +33,7 @@ public class SecurityFilter extends OncePerRequestFilter {
             var login = tokenService.validateToken(token);
             Usuario usuario = usuarioRepository.findByEmail(login).orElse(null);
             if (usuario != null) {
-                UserDetails user = new User(usuario.getEmail(), usuario.getSenha(), usuario.getPerfil());
+                UserDetails user = new User(usuario.getId(), usuario.getEmail(), usuario.getSenha(), usuario.getPerfil());
 
                 // Salvamos as informações necessarias para que apenas o login consiga pegar as informações sobre o user ( se ele é gestor ou não )
                 var authentication = new UsernamePasswordAuthenticationToken(user, null, user.getAuthorities());
