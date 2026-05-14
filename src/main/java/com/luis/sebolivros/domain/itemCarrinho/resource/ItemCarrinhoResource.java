@@ -14,7 +14,7 @@ import java.net.URI;
 import java.util.List;
 
 @RestController
-@RequestMapping(value = "ItensCarrinho")
+@RequestMapping(value = "itensCarrinho")
 public class ItemCarrinhoResource {
 
     @Autowired
