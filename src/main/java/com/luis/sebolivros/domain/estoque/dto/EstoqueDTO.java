@@ -83,10 +83,6 @@ public class EstoqueDTO implements Serializable {
         return Condicao.toEnum(this.condicao);
     }
 
-    public void setCondicao(Condicao condicao) {
-        this.condicao = condicao.getCodigo();
-    }
-
     public void setCondicao(Integer condicao) {
         this.condicao = condicao;
     }
