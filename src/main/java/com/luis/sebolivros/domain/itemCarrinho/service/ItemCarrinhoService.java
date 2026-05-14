@@ -40,10 +40,36 @@ public class ItemCarrinhoService {
     }
 
     public ItemCarrinho create(ItemCarrinhoDTO objDTO){
+
         objDTO.setId(null);
+
+        ItemCarrinho itemExistente = verificar(objDTO);
+
+        if (itemExistente != null){
+            return itemExistente;
+        }
+
         ItemCarrinho obj = newItemCarrinho(objDTO);
         return repository.save(obj);
     }
+
+    private ItemCarrinho verificar(ItemCarrinhoDTO objDto){
+        Carrinho carrinho = carrinhoService.findById(objDto.getCarrinho());
+
+        for (ItemCarrinho x : carrinho.getItens()){
+            if (x.getEstoque().getId().equals(objDto.getEstoque())){
+                int quantidade = x.getQuantidade() + 1;
+                Estoque estoque = estoqueService.findById(objDto.getEstoque());
+                if (quantidade > estoque.getQuantidade()){
+                    throw new DataIntegrityViolationException("Quantidade indisponível");
+                }
+                x.setQuantidade(quantidade);
+                return repository.save(x);
+            }
+        }
+        return null;
+    }
+
 
     public ItemCarrinho update(int id, ItemCarrinhoDTO objDTO){
         ItemCarrinho newObj = findById(id);
