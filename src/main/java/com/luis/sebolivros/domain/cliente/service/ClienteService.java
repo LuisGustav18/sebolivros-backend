@@ -45,7 +45,12 @@ public class ClienteService {
 
     public Carrinho findCarrinhoAtivoById(int id){
         List<Carrinho> list = carrinhoRepository.findByClienteIdAndStatus(id, Status.ATIVO);
-        if (list.size() != 1){
+
+        if (list.isEmpty()){
+            throw new DataIntegrityViolationException("Nenhum carrinho encontrado");
+        }
+
+        if (list.size() > 1){
             throw new DataIntegrityViolationException("Não e possível existir mais de um carrinho ativo");
         }
         return list.get(0);
