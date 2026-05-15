@@ -53,7 +53,9 @@ public class ClienteService {
         if (list.size() > 1){
             throw new DataIntegrityViolationException("Não e possível existir mais de um carrinho ativo");
         }
-        return list.get(0);
+        Carrinho obj = list.get(0);
+        obj.atualizarSubTotal();
+        return obj;
     }
 
     public List<Cliente> findAll(){

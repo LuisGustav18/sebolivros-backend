@@ -91,7 +91,8 @@ public class CarrinhoService {
     private void atualizandoEstoque(Carrinho obj){
         for (ItemCarrinho x : obj.getItens()){
             int quantidade = x.getEstoque().getQuantidade() - x.getQuantidade();
-            estoqueService.atualizarQuantidade(x.getId(), quantidade);
+            // Talvez trocque x.getId();
+            estoqueService.atualizarQuantidade(x.getEstoque().getId(), quantidade);
         }
     }
 
