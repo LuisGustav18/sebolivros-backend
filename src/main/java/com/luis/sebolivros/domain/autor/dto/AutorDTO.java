@@ -23,14 +23,10 @@ public class AutorDTO implements Serializable {
         this.nome = nome;
     }
 
-    public AutorDTO(Integer id, String nome) {
-        this.id = id;
-        this.nome = nome;
-    }
-
     public AutorDTO(Autor obj) {
         this.id = obj.getId();
         this.nome = obj.getNome();
+        this.imageUrl = obj.getImageUrl();
     }
 
     public Integer getId() {

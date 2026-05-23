@@ -113,7 +113,7 @@ class AutorServiceTest {
 
         when(repository.save(any(Autor.class))).thenReturn(obj);
 
-        Autor result = autorService.create(new AutorDTO(obj));
+        Autor result = autorService.create(new AutorDTO(obj), null);
 
         assertNotNull(result);
         assertEquals(1, result.getId());
@@ -135,7 +135,7 @@ class AutorServiceTest {
 
         when(repository.save(any(Autor.class))).thenAnswer(invocation -> invocation.getArgument(0));
 
-        Autor result = autorService.update(id, new AutorDTO("Lucas"));
+        Autor result = autorService.update(id, new AutorDTO("Lucas"), null);
 
         assertNotNull(result);
         assertEquals("Lucas", result.getNome());
@@ -154,7 +154,7 @@ class AutorServiceTest {
         when(repository.findById(id)).thenReturn(Optional.empty());
 
         Exception thrown = Assertions.assertThrows(ObjectNotFoundException.class, () -> {
-            autorService.update(id, new AutorDTO("Lucas")); });
+            autorService.update(id, new AutorDTO("Lucas"),  null); });
 
         verify(repository, times(1)).findById(id);
         verify(repository, never()).save(any());

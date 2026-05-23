@@ -26,6 +26,7 @@ public class AutorLivrosDTO implements Serializable {
         this.id = obj.getId();
         this.nome = obj.getNome();
         this.livros = obj.getLivros().stream().map(LivroDTO::new).toList();
+        this.imageUrl = obj.getImageUrl();
     }
 
     public Integer getId() {
