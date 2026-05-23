@@ -16,6 +16,8 @@ public class AutorLivrosDTO implements Serializable {
 
     private List<LivroDTO> livros = new ArrayList<>();
 
+    private String imageUrl;
+
     public AutorLivrosDTO() {
 
     }
@@ -48,5 +50,13 @@ public class AutorLivrosDTO implements Serializable {
 
     public void setLivros(List<LivroDTO> livros) {
         this.livros = livros;
+    }
+
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
     }
 }

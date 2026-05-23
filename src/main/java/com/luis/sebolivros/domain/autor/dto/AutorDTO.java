@@ -13,6 +13,8 @@ public class AutorDTO implements Serializable {
     @NotNull(message = "O campo NOME é requerido")
     private String nome;
 
+    private String imageUrl;
+
     public AutorDTO() {
 
     }
@@ -45,5 +47,13 @@ public class AutorDTO implements Serializable {
 
     public void setNome(String nome) {
         this.nome = nome;
+    }
+
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
     }
 }

@@ -56,13 +56,22 @@ public class DBService {
     public void instaciaDB(){
 
         Autor autor01 = new Autor("Homero", null);
+        autor01.setImageUrl("Homero.jpg");
         Autor autor02 = new Autor("William Shakespeare", null);
+        autor02.setImageUrl("William_Shakespeare.jpg");
         Autor autor03 = new Autor("Machado de Assis", null);
+        autor03.setImageUrl("Machado_De_Assis.jpg");
         Autor autor04 = new Autor("George Orwell", null);
+        autor04.setImageUrl("George_Orwell.jpg");
         Autor autor05 = new Autor("J. R. R. Tolkien", null);
+        autor05.setImageUrl("J_R_R_Tolkien.jpg");
         Autor autor06 = new Autor("Clarice Lispector", null);
+        autor06.setImageUrl("Clarice_Lispector.png");
         Autor autor07 = new Autor("Franz Kafka", null);
+        autor07.setImageUrl("Franz_Kafka.jpg");
         Autor autor08 = new Autor("Agatha Christie", null);
+        autor08.setImageUrl("Agatha_Christie.jpg");
+
 
         Editora editora01 = new Editora("Penguin-Companhia", null);
         Editora editora02 = new Editora("Record", null);

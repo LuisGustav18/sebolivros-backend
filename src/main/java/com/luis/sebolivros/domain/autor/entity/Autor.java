@@ -24,6 +24,8 @@ public class Autor implements Serializable {
     @OneToMany(mappedBy = "autor")
     private List<Livro> livros = new ArrayList<>();
 
+    private String imageUrl;
+
     @JsonFormat(pattern = "dd/MM/yyyy")
     private LocalDate dataCriacao = LocalDate.now();
 
@@ -59,6 +61,14 @@ public class Autor implements Serializable {
 
     public List<Livro> getLivros() {
         return livros;
+    }
+
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
     }
 
     public LocalDate getDataCriacao() {

@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.net.URI;
@@ -44,16 +45,16 @@ public class AutorResource {
 
     @PreAuthorize("hasAnyRole('GESTOR')")
     @PostMapping
-    public ResponseEntity<AutorDTO> create(@Valid @RequestBody AutorDTO objDto){
-        Autor obj = service.create(objDto);
+    public ResponseEntity<AutorDTO> create(@Valid @ModelAttribute AutorDTO objDto, @RequestParam(value = "file", required = false) MultipartFile file){
+        Autor obj = service.create(objDto, file);
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(obj.getId()).toUri();
         return ResponseEntity.created(uri).build();
     }
 
     @PreAuthorize("hasAnyRole('GESTOR')")
     @PutMapping(value = "/{id}")
-    public ResponseEntity<AutorDTO> update(@PathVariable Integer id,@Valid @RequestBody AutorDTO objDto){
-        Autor obj = service.update(id, objDto);
+    public ResponseEntity<AutorDTO> update(@PathVariable Integer id,@Valid @ModelAttribute AutorDTO objDto, @RequestParam(value = "file", required = false) MultipartFile file){
+        Autor obj = service.update(id, objDto, file);
         return ResponseEntity.ok().body(new AutorDTO(obj));
     }
 
