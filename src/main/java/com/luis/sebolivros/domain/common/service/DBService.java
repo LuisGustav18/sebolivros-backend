@@ -56,21 +56,21 @@ public class DBService {
     public void instaciaDB(){
 
         Autor autor01 = new Autor("Homero", null);
-        autor01.setImageUrl("Homero.jpg");
+        autor01.setImageUrl("https://utskkhxqkzwawkhnoxmq.supabase.co/storage/v1/object/public/livros/Homero.jpg");
         Autor autor02 = new Autor("William Shakespeare", null);
-        autor02.setImageUrl("William_Shakespeare.jpg");
+        autor02.setImageUrl("https://utskkhxqkzwawkhnoxmq.supabase.co/storage/v1/object/public/livros/William_Shakespeare.jpg");
         Autor autor03 = new Autor("Machado de Assis", null);
-        autor03.setImageUrl("Machado_De_Assis.jpg");
+        autor03.setImageUrl("https://utskkhxqkzwawkhnoxmq.supabase.co/storage/v1/object/public/livros/Machado_De_Assis.jpg");
         Autor autor04 = new Autor("George Orwell", null);
-        autor04.setImageUrl("George_Orwell.jpg");
+        autor04.setImageUrl("https://utskkhxqkzwawkhnoxmq.supabase.co/storage/v1/object/public/livros/George_Orwell.jpg");
         Autor autor05 = new Autor("J. R. R. Tolkien", null);
-        autor05.setImageUrl("J_R_R_Tolkien.jpg");
+        autor05.setImageUrl("https://utskkhxqkzwawkhnoxmq.supabase.co/storage/v1/object/public/livros/J_R_R_Tolkien.jpg");
         Autor autor06 = new Autor("Clarice Lispector", null);
-        autor06.setImageUrl("Clarice_Lispector.png");
+        autor06.setImageUrl("https://utskkhxqkzwawkhnoxmq.supabase.co/storage/v1/object/public/livros/Clarice_Lispector.png");
         Autor autor07 = new Autor("Franz Kafka", null);
-        autor07.setImageUrl("Franz_Kafka.jpg");
+        autor07.setImageUrl("https://utskkhxqkzwawkhnoxmq.supabase.co/storage/v1/object/public/livros/Franz_Kafka.jpg");
         Autor autor08 = new Autor("Agatha Christie", null);
-        autor08.setImageUrl("Agatha_Christie.jpg");
+        autor08.setImageUrl("https://utskkhxqkzwawkhnoxmq.supabase.co/storage/v1/object/public/livros/Agatha_Christie.jpg");
 
 
         Editora editora01 = new Editora("Penguin-Companhia", null);
