@@ -19,13 +19,11 @@ public class SupaBaseStorageService {
     @Value("${supabase.api.key}")
     private String API_KEY;
 
-    private final String BUCKET = "livros";
-
-    public String uploadImagem(MultipartFile file) {
+    public String uploadImagem(MultipartFile file, String bucket) {
         try {
             String fileName = System.currentTimeMillis() + "_" + file.getOriginalFilename();
 
-            String url = SUPABASE_URL + "/storage/v1/object/" + BUCKET + "/" + fileName;
+            String url = SUPABASE_URL + "/storage/v1/object/" + bucket + "/" + fileName;
 
             HttpHeaders headers = new HttpHeaders();
             headers.set("apikey", API_KEY);
@@ -37,7 +35,7 @@ public class SupaBaseStorageService {
             RestTemplate restTemplate = new RestTemplate();
             restTemplate.exchange(url, HttpMethod.POST, entity, String.class);
 
-            return SUPABASE_URL + "/storage/v1/object/public/" + BUCKET + "/" + fileName;
+            return SUPABASE_URL + "/storage/v1/object/public/" + bucket + "/" + fileName;
         } catch (IOException e) {
             throw new RuntimeException("Erro ao enviar imagem", e);
         }

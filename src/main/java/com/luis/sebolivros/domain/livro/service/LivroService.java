@@ -60,7 +60,7 @@ public class LivroService {
         objDto.setId(null);
 
         if (file != null && !file.isEmpty()) {
-            String imageUrl = storageService.uploadImagem(file);
+            String imageUrl = storageService.uploadImagem(file, "livros");
             objDto.setImageUrl(imageUrl);
         }
 
@@ -78,7 +78,7 @@ public class LivroService {
         }
 
         if (file != null && !file.isEmpty()){
-            String imageUrl = storageService.uploadImagem(file);
+            String imageUrl = storageService.uploadImagem(file, "livros");
             objDto.setImageUrl(imageUrl);
         } else {
             objDto.setImageUrl(oldObj.getImageUrl());

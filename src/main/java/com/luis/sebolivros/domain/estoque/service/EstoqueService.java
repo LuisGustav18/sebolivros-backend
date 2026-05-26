@@ -46,7 +46,7 @@ public class EstoqueService {
         objDto.setId(null);
 
         if (file != null && !file.isEmpty()) {
-            String imageUrl = storageService.uploadImagem(file);
+            String imageUrl = storageService.uploadImagem(file, "livros");
             objDto.setImageUrl(imageUrl);
         }
 
@@ -64,7 +64,7 @@ public class EstoqueService {
         }
 
         if (file != null && !file.isEmpty()){
-            String imageUrl = storageService.uploadImagem(file);
+            String imageUrl = storageService.uploadImagem(file, "livros");
             objDto.setImageUrl(imageUrl);
         } else {
             objDto.setImageUrl(oldObj.getImageUrl());

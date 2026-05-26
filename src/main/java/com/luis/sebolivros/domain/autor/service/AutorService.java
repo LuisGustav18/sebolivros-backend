@@ -36,7 +36,7 @@ public class AutorService {
         objDto.setId(null);
 
         if (file != null && !file.isEmpty()) {
-            String imageUrl = storageService.uploadImagem(file);
+            String imageUrl = storageService.uploadImagem(file, "autores");
             objDto.setImageUrl(imageUrl);
         }
 
@@ -48,7 +48,7 @@ public class AutorService {
         Autor oldObj = findById(id);
 
         if (file != null && !file.isEmpty()) {
-            String imageUrl = storageService.uploadImagem(file);
+            String imageUrl = storageService.uploadImagem(file, "autores");
             objDto.setImageUrl(imageUrl);
         }
         else {

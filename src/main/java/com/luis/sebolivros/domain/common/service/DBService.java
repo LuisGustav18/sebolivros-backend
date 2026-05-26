@@ -56,21 +56,21 @@ public class DBService {
     public void instaciaDB(){
 
         Autor autor01 = new Autor("Homero", null);
-        autor01.setImageUrl("https://utskkhxqkzwawkhnoxmq.supabase.co/storage/v1/object/public/livros/Homero.jpg");
+        autor01.setImageUrl("https://utskkhxqkzwawkhnoxmq.supabase.co/storage/v1/object/public/autores/Homero.jpg");
         Autor autor02 = new Autor("William Shakespeare", null);
-        autor02.setImageUrl("https://utskkhxqkzwawkhnoxmq.supabase.co/storage/v1/object/public/livros/William_Shakespeare.jpg");
+        autor02.setImageUrl("https://utskkhxqkzwawkhnoxmq.supabase.co/storage/v1/object/public/autores/William_Shakespeare.jpg");
         Autor autor03 = new Autor("Machado de Assis", null);
-        autor03.setImageUrl("https://utskkhxqkzwawkhnoxmq.supabase.co/storage/v1/object/public/livros/Machado_De_Assis.jpg");
+        autor03.setImageUrl("https://utskkhxqkzwawkhnoxmq.supabase.co/storage/v1/object/public/autores/Machado_De_Assis.jpg");
         Autor autor04 = new Autor("George Orwell", null);
-        autor04.setImageUrl("https://utskkhxqkzwawkhnoxmq.supabase.co/storage/v1/object/public/livros/George_Orwell.jpg");
+        autor04.setImageUrl("https://utskkhxqkzwawkhnoxmq.supabase.co/storage/v1/object/public/autores/George_Orwell.jpg");
         Autor autor05 = new Autor("J. R. R. Tolkien", null);
-        autor05.setImageUrl("https://utskkhxqkzwawkhnoxmq.supabase.co/storage/v1/object/public/livros/J_R_R_Tolkien.jpg");
+        autor05.setImageUrl("https://utskkhxqkzwawkhnoxmq.supabase.co/storage/v1/object/public/autores/J_R_R_Tolkien.jpg");
         Autor autor06 = new Autor("Clarice Lispector", null);
-        autor06.setImageUrl("https://utskkhxqkzwawkhnoxmq.supabase.co/storage/v1/object/public/livros/Clarice_Lispector.png");
+        autor06.setImageUrl("https://utskkhxqkzwawkhnoxmq.supabase.co/storage/v1/object/public/autores/Clarice_Lispector.png");
         Autor autor07 = new Autor("Franz Kafka", null);
-        autor07.setImageUrl("https://utskkhxqkzwawkhnoxmq.supabase.co/storage/v1/object/public/livros/Franz_Kafka.jpg");
+        autor07.setImageUrl("https://utskkhxqkzwawkhnoxmq.supabase.co/storage/v1/object/public/autores/Franz_Kafka.jpg");
         Autor autor08 = new Autor("Agatha Christie", null);
-        autor08.setImageUrl("https://utskkhxqkzwawkhnoxmq.supabase.co/storage/v1/object/public/livros/Agatha_Christie.jpg");
+        autor08.setImageUrl("https://utskkhxqkzwawkhnoxmq.supabase.co/storage/v1/object/public/autores/Agatha_Christie.jpg");
 
 
         Editora editora01 = new Editora("Penguin-Companhia", null);
@@ -81,10 +81,15 @@ public class DBService {
         Editora editora06 = new Editora("Martins Fontes", null);
 
         Sebo sebo01 = new Sebo(null, "Maravilha", "maravilha@gmail.com", encoder.encode("123"), "01001-000", "12345678000195");
+        sebo01.setImageUrl("https://utskkhxqkzwawkhnoxmq.supabase.co/storage/v1/object/public/sebos/sebo01.jpg");
         Sebo sebo02 = new Sebo(null, "Sebo Central", "central@gmail.com", encoder.encode("123"), "20040-020", "98765432000110");
+        sebo02.setImageUrl("https://utskkhxqkzwawkhnoxmq.supabase.co/storage/v1/object/public/sebos/sebo02.jpg");
         Sebo sebo03 = new Sebo(null, "Sebo Antiguidades", "antigo@gmail.com", encoder.encode("123"), "30140-110", "11222333000181");
+        sebo03.setImageUrl("https://utskkhxqkzwawkhnoxmq.supabase.co/storage/v1/object/public/sebos/sebo03.jpg");
         Sebo sebo04 = new Sebo(null, "Sebo Universitário", "uni@gmail.com", encoder.encode("123"), "70040-010", "55666777000102");
+        sebo04.setImageUrl("https://utskkhxqkzwawkhnoxmq.supabase.co/storage/v1/object/public/sebos/sebo04.jpg");
         Sebo sebo05 = new Sebo(null, "Sebo Vintage", "vintage@gmail.com", encoder.encode("123"), "80010-000", "44555666000177");
+        sebo05.setImageUrl("https://utskkhxqkzwawkhnoxmq.supabase.co/storage/v1/object/public/sebos/sebo05.jpg");
 
         Livro livro01 = new Livro(null, "A Odisseia",  autor01, 2014, editora01, "9788563560271");
         Livro livro02 = new Livro(null, "Hamlet", autor02, 2012, editora02, "9788503012304");
@@ -104,13 +109,13 @@ public class DBService {
         livro02.setImageUrl("https://utskkhxqkzwawkhnoxmq.supabase.co/storage/v1/object/public/livros/hamlet.jpg");
         livro03.setImageUrl("https://utskkhxqkzwawkhnoxmq.supabase.co/storage/v1/object/public/livros/dom-casmurro.jpg");
         livro04.setImageUrl("https://utskkhxqkzwawkhnoxmq.supabase.co/storage/v1/object/public/livros/1984.jpg");
-        livro05.setImageUrl("https://utskkhxqkzwawkhnoxmq.supabase.co/storage/v1/object/public/livros/senhor-dos-aneis.jpg"); // confere o nome
+        livro05.setImageUrl("https://utskkhxqkzwawkhnoxmq.supabase.co/storage/v1/object/public/livros/senhor-dos-aneis.jpg");
         livro06.setImageUrl("https://utskkhxqkzwawkhnoxmq.supabase.co/storage/v1/object/public/livros/AHoradaEstrela.jpg");
         livro07.setImageUrl("https://utskkhxqkzwawkhnoxmq.supabase.co/storage/v1/object/public/livros/metamorfose.jpg");
         livro08.setImageUrl("https://utskkhxqkzwawkhnoxmq.supabase.co/storage/v1/object/public/livros/AssassinatonoExpresso.jpg");
-        livro09.setImageUrl("https://utskkhxqkzwawkhnoxmq.supabase.co/storage/v1/object/public/livros/iliada.jpg"); // corrige se necessário
+        livro09.setImageUrl("https://utskkhxqkzwawkhnoxmq.supabase.co/storage/v1/object/public/livros/iliada.jpg");
         livro10.setImageUrl("https://utskkhxqkzwawkhnoxmq.supabase.co/storage/v1/object/public/livros/OHobbit.jpg");
-        livro11.setImageUrl("https://utskkhxqkzwawkhnoxmq.supabase.co/storage/v1/object/public/livros/capitaes-da-areia.jpg"); // precisa existir
+        livro11.setImageUrl("https://utskkhxqkzwawkhnoxmq.supabase.co/storage/v1/object/public/livros/capitaes-da-areia.jpg");
         livro12.setImageUrl("https://utskkhxqkzwawkhnoxmq.supabase.co/storage/v1/object/public/livros/MemoriasPostumas.jpg");
         livro13.setImageUrl("https://utskkhxqkzwawkhnoxmq.supabase.co/storage/v1/object/public/livros/CrimeeCastigo.jpg");
 

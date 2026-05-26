@@ -52,7 +52,7 @@ public class SeboService {
         validarCnpj(objDto.getCnpj());
 
         if (file != null && !file.isEmpty()) {
-            String imageUrl = storageService.uploadImagem(file);
+            String imageUrl = storageService.uploadImagem(file, "sebos");
             objDto.setImageUrl(imageUrl);
         }
 
@@ -77,7 +77,7 @@ public class SeboService {
         }
 
         if (file != null && !file.isEmpty()) {
-            String imageUrl = storageService.uploadImagem(file);
+            String imageUrl = storageService.uploadImagem(file, "sebos");
             objDto.setImageUrl(imageUrl);
         }
         else {
