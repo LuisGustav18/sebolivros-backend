@@ -140,7 +140,7 @@ class SeboServiceTest {
 
         when(repository.save(any(Sebo.class))).thenReturn(obj);
 
-        Sebo result = SeboService.create(new SeboDTO(obj));
+        Sebo result = SeboService.create(new SeboDTO(obj), null);
 
         assertNotNull(result);
         assertEquals("MaravilhaSebo", result.getNome());
@@ -169,7 +169,7 @@ class SeboServiceTest {
 
         when(repository.save(any(Sebo.class))).thenAnswer(invocation -> invocation.getArgument(0));
 
-        Sebo result = SeboService.update(id, new SeboDTO(1, "Maravilha1", "maravilha1@gmail.com", "1231", "38204-054", "12345678000195"));
+        Sebo result = SeboService.update(id, new SeboDTO(1, "Maravilha1", "maravilha1@gmail.com", "1231", "38204-054", "12345678000195"), null);
 
         assertNotNull(result);
         assertEquals("Maravilha1", result.getNome());
@@ -190,7 +190,7 @@ class SeboServiceTest {
         when(repository.findById(id)).thenReturn(Optional.empty());
 
         Exception thrown = Assertions.assertThrows(ObjectNotFoundException.class, () -> {
-            SeboService.update(id, new SeboDTO(1, "Maravilha1", "maravilha1@gmail.com", "1231", "38204-054", "12345678000193")); });
+            SeboService.update(id, new SeboDTO(1, "Maravilha1", "maravilha1@gmail.com", "1231", "38204-054", "12345678000193"), null); });
 
         verify(repository, times(1)).findById(id);
         verify(repository, never()).save(any());

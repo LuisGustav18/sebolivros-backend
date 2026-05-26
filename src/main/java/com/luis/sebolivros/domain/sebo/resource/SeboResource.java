@@ -12,6 +12,7 @@ import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import reactor.core.publisher.Mono;
 
@@ -47,15 +48,15 @@ public class SeboResource {
     }
 
     @PostMapping
-    public ResponseEntity<SeboDTO> create(@Valid @RequestBody SeboDTO objDto){
-        Sebo obj = service.create(objDto);
+    public ResponseEntity<SeboDTO> create(@Valid @ModelAttribute SeboDTO objDto, @RequestParam(value = "file", required = false) MultipartFile file){
+        Sebo obj = service.create(objDto, file);
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(obj.getId()).toUri();
         return ResponseEntity.created(uri).build();
     }
 
     @PutMapping(value = "/{id}")
-    public ResponseEntity<SeboDTO> update(@PathVariable Integer id,@Valid @RequestBody SeboDTO objDto){
-        Sebo obj = service.update(id, objDto);
+    public ResponseEntity<SeboDTO> update(@PathVariable Integer id, @Valid @ModelAttribute SeboDTO objDto, @RequestParam(value = "file", required = false) MultipartFile file){
+        Sebo obj = service.update(id, objDto, file);
         return ResponseEntity.ok().body(new SeboDTO(obj));
     }
 

@@ -24,6 +24,8 @@ public class Sebo extends Usuario {
     @JsonIgnore
     private List<Estoque> estoques = new ArrayList<>();
 
+    private String imageUrl;
+
     public Sebo(){
         super();
         setPerfil(Perfil.GESTOR);
@@ -44,6 +46,7 @@ public class Sebo extends Usuario {
         this.senha = objDto.getSenha();
         this.cep = objDto.getCep();
         this.cnpj = objDto.getCnpj();
+        this.imageUrl = objDto.getImageUrl();
     }
 
     public String getCep() {
@@ -78,8 +81,12 @@ public class Sebo extends Usuario {
         return estoques;
     }
 
-    public void setEstoques(List<Estoque> estoques) {
-        this.estoques = estoques;
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
     }
 
     @Override

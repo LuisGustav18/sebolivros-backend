@@ -28,6 +28,8 @@ public class SeboDTO implements Serializable {
     @NotNull(message = "O campo CNPJ é requerido")
     private String cnpj;
 
+    private String imageUrl;
+
     private Integer perfil;
 
     @JsonFormat(pattern = "dd/MM/yyyy")
@@ -54,6 +56,7 @@ public class SeboDTO implements Serializable {
         this.senha = obj.getSenha();
         this.cep = obj.getCep();
         this.cnpj = obj.getCnpj();
+        this.imageUrl = obj.getImageUrl();
         setPerfil(Perfil.GESTOR);
     }
 
@@ -103,6 +106,14 @@ public class SeboDTO implements Serializable {
 
     public void setCnpj(String cnpj) {
         this.cnpj = cnpj;
+    }
+
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
     }
 
     public Perfil getPerfil() {

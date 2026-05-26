@@ -13,6 +13,8 @@ public class SeboLivrosDTO implements Serializable {
 
     private String nome;
 
+    private String imageUrl;
+
     private List<EstoqueDTO> estoques = new ArrayList<>();
 
     public SeboLivrosDTO(){
@@ -23,6 +25,7 @@ public class SeboLivrosDTO implements Serializable {
         this.id = obj.getId();
         this.nome = obj.getNome();
         this.estoques = obj.getEstoques().stream().map(EstoqueDTO::new).toList();
+        this.imageUrl = obj.getImageUrl();
     }
 
     public Integer getId() {
@@ -47,5 +50,13 @@ public class SeboLivrosDTO implements Serializable {
 
     public void setEstoques(List<EstoqueDTO> estoques) {
         this.estoques = estoques;
+    }
+
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
     }
 }

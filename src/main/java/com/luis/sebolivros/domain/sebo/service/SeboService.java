@@ -8,10 +8,12 @@ import com.luis.sebolivros.domain.sebo.entity.Sebo;
 import com.luis.sebolivros.domain.sebo.repository.SeboRepository;
 import com.luis.sebolivros.infra.cep.client.CepClient;
 import com.luis.sebolivros.infra.cep.dto.EnderecoDTO;
+import com.luis.sebolivros.infra.storage.SupaBaseStorageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import com.luis.sebolivros.exceptions.DataIntegrityViolationException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 import java.util.Objects;
@@ -32,6 +34,9 @@ public class SeboService {
     @Autowired
     private CepClient cepClient;
 
+    @Autowired
+    private SupaBaseStorageService storageService;
+
     public Sebo findById(int id){
         Optional<Sebo> obj = repository.findById(id);
         return obj.orElseThrow(() -> new ObjectNotFoundException("Sebo não encontrado"));
@@ -41,15 +46,21 @@ public class SeboService {
         return repository.findAll();
     }
 
-    public Sebo create(SeboDTO objDto){
+    public Sebo create(SeboDTO objDto, MultipartFile file){
         objDto.setId(null);
         validarEmail(objDto);
         validarCnpj(objDto.getCnpj());
+
+        if (file != null && !file.isEmpty()) {
+            String imageUrl = storageService.uploadImagem(file);
+            objDto.setImageUrl(imageUrl);
+        }
+
         objDto.setSenha(encoder.encode(objDto.getSenha()));
         return repository.save(new Sebo(objDto));
     }
 
-    public Sebo update(Integer id, SeboDTO objDto){
+    public Sebo update(Integer id, SeboDTO objDto, MultipartFile file){
         objDto.setId(id);
         Sebo oldObj = findById(id);
 
@@ -63,6 +74,14 @@ public class SeboService {
 
         if (!objDto.getSenha().equals(oldObj.getSenha())){
             objDto.setSenha(encoder.encode(objDto.getSenha()));
+        }
+
+        if (file != null && !file.isEmpty()) {
+            String imageUrl = storageService.uploadImagem(file);
+            objDto.setImageUrl(imageUrl);
+        }
+        else {
+            objDto.setImageUrl(objDto.getImageUrl());
         }
 
         oldObj = new Sebo(objDto);
