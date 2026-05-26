@@ -40,6 +40,7 @@ public class Autor implements Serializable {
 
     public Autor(AutorDTO objDto) {
         this.nome = objDto.getNome();
+        this.imageUrl = objDto.getImageUrl();
         this.id = objDto.getId();
     }
 
