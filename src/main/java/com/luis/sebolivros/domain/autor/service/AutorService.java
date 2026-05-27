@@ -52,7 +52,7 @@ public class AutorService {
             objDto.setImageUrl(imageUrl);
         }
         else {
-            objDto.setImageUrl(objDto.getImageUrl());
+            objDto.setImageUrl(oldObj.getImageUrl());
         }
 
         oldObj = new Autor(objDto);

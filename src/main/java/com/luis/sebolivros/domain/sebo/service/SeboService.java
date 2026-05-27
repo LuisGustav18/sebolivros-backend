@@ -81,7 +81,7 @@ public class SeboService {
             objDto.setImageUrl(imageUrl);
         }
         else {
-            objDto.setImageUrl(objDto.getImageUrl());
+            objDto.setImageUrl(oldObj.getImageUrl());
         }
 
         oldObj = new Sebo(objDto);
